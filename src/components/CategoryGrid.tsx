@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Smartphone, Laptop, Watch, Headphones, Camera, Gamepad2 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const categories = [
   { name: "Electronics", icon: Smartphone, count: 245 },
@@ -11,14 +12,16 @@ const categories = [
 ];
 
 const CategoryGrid = () => {
+  const { t } = useLanguage();
+  
   return (
     <section className="py-16 relative">
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center space-y-3">
           <h2 className="text-4xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Browse by Category
+            {t('browseByPlatform')}
           </h2>
-          <p className="text-foreground/60 text-lg">Explore products across gaming platforms and social media</p>
+          <p className="text-foreground/60 text-lg">{t('choosePlatform')}</p>
         </div>
         
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">

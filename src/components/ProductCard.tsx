@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ShoppingCart, Star } from "lucide-react";
 import { getCategoryImage } from "@/lib/categoryImages";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ProductCardProps {
   id: string;
@@ -16,6 +17,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ name, price, image, category, rating, reviews, featured }: ProductCardProps) => {
+  const { t } = useLanguage();
   // Use category-based image instead of product-specific image
   const displayImage = getCategoryImage(category, image);
   
@@ -30,7 +32,7 @@ const ProductCard = ({ name, price, image, category, rating, reviews, featured }
           />
           {featured && (
             <Badge className="absolute left-3 top-3 badge-glow border-0 font-semibold">
-              ⭐ Featured
+              ⭐ {t('featured')}
             </Badge>
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -57,7 +59,7 @@ const ProductCard = ({ name, price, image, category, rating, reviews, featured }
       <CardFooter className="p-4 pt-0">
         <Button className="w-full gap-2 btn-glow">
           <ShoppingCart className="h-4 w-4" />
-          Add to Cart
+          {t('addToCart')}
         </Button>
       </CardFooter>
     </Card>

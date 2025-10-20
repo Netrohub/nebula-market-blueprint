@@ -7,6 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Trophy, TrendingUp, Star, Award, Medal, Crown } from "lucide-react";
 import { getCategoryImage } from "@/lib/categoryImages";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const topSellers = [
   {
@@ -124,6 +125,8 @@ const getBadgeIcon = (rank: number) => {
 };
 
 const Leaderboard = () => {
+  const { t } = useLanguage();
+  
   return (
     <div className="min-h-screen flex flex-col relative">
       <Starfield />
@@ -140,15 +143,15 @@ const Leaderboard = () => {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-primary/30 mb-4">
                 <Trophy className="h-4 w-4 text-primary" />
                 <span className="text-sm font-medium bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  Top Performers
+                  {t('topPerformers')}
                 </span>
               </div>
               
               <h1 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Leaderboard
+                {t('leaderboard')}
               </h1>
               <p className="text-lg text-foreground/60">
-                Discover the top sellers, most popular products, and active buyers in the Nexo community
+                {t('leaderboardDesc')}
               </p>
             </div>
           </div>
@@ -160,13 +163,13 @@ const Leaderboard = () => {
             <Tabs defaultValue="sellers" className="w-full">
               <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 glass-card mb-12">
                 <TabsTrigger value="sellers" className="data-[state=active]:bg-primary/20">
-                  Top Sellers
+                  {t('topSellers')}
                 </TabsTrigger>
                 <TabsTrigger value="products" className="data-[state=active]:bg-primary/20">
-                  Top Products
+                  {t('topProducts')}
                 </TabsTrigger>
                 <TabsTrigger value="buyers" className="data-[state=active]:bg-primary/20">
-                  Top Buyers
+                  {t('topBuyers')}
                 </TabsTrigger>
               </TabsList>
 
@@ -200,18 +203,18 @@ const Leaderboard = () => {
                           <div className="flex flex-wrap gap-4 text-sm text-foreground/60">
                             <div className="flex items-center gap-1">
                               <TrendingUp className="h-4 w-4 text-primary" />
-                              <span>{seller.sales} sales</span>
+                              <span>{seller.sales} {t('sales')}</span>
                             </div>
                             <div className="flex items-center gap-1">
                               <Star className="h-4 w-4 fill-primary text-primary" />
-                              <span>{seller.rating} rating</span>
+                              <span>{seller.rating} {t('rating')}</span>
                             </div>
                           </div>
                         </div>
 
                         {/* Revenue */}
                         <div className="text-right hidden md:block">
-                          <p className="text-sm text-foreground/60 mb-1">Total Revenue</p>
+                          <p className="text-sm text-foreground/60 mb-1">{t('totalRevenue')}</p>
                           <p className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                             {seller.revenue}
                           </p>
@@ -247,11 +250,11 @@ const Leaderboard = () => {
                           <h3 className="text-xl font-bold text-foreground truncate mb-1 group-hover:text-primary transition-colors">
                             {product.name}
                           </h3>
-                          <p className="text-sm text-foreground/60 mb-2">by {product.seller}</p>
+                          <p className="text-sm text-foreground/60 mb-2">{t('by')} {product.seller}</p>
                           <div className="flex flex-wrap gap-4 text-sm text-foreground/60">
                             <div className="flex items-center gap-1">
                               <TrendingUp className="h-4 w-4 text-primary" />
-                              <span>{product.sales} sold</span>
+                              <span>{product.sales} {t('sold')}</span>
                             </div>
                             <div className="flex items-center gap-1">
                               <Star className="h-4 w-4 fill-primary text-primary" />
@@ -262,7 +265,7 @@ const Leaderboard = () => {
 
                         {/* Price */}
                         <div className="text-right hidden md:block">
-                          <p className="text-sm text-foreground/60 mb-1">Price</p>
+                          <p className="text-sm text-foreground/60 mb-1">{t('price')}</p>
                           <p className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                             {product.price}
                           </p>
@@ -298,18 +301,18 @@ const Leaderboard = () => {
                           <div className="flex flex-wrap gap-4 text-sm text-foreground/60">
                             <div className="flex items-center gap-1">
                               <TrendingUp className="h-4 w-4 text-primary" />
-                              <span>{buyer.purchases} purchases</span>
+                              <span>{buyer.purchases} {t('purchases')}</span>
                             </div>
                             <div className="flex items-center gap-1">
                               <Star className="h-4 w-4 fill-primary text-primary" />
-                              <span>{buyer.rating} rating</span>
+                              <span>{buyer.rating} {t('rating')}</span>
                             </div>
                           </div>
                         </div>
 
                         {/* Spent */}
                         <div className="text-right hidden md:block">
-                          <p className="text-sm text-foreground/60 mb-1">Total Spent</p>
+                          <p className="text-sm text-foreground/60 mb-1">{t('totalSpent')}</p>
                           <p className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                             {buyer.spent}
                           </p>

@@ -1,4 +1,5 @@
 import ProductCard from "./ProductCard";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const products = [
   {
@@ -64,6 +65,8 @@ const products = [
 ];
 
 const FeaturedProducts = () => {
+  const { t } = useLanguage();
+  
   return (
     <section className="py-16 relative">
       {/* Background glow effect */}
@@ -72,9 +75,9 @@ const FeaturedProducts = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="mb-12 text-center space-y-3">
           <h2 className="text-4xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Featured Products
+            {t('featuredAccounts')}
           </h2>
-          <p className="text-foreground/60 text-lg">Handpicked premium accounts and digital products</p>
+          <p className="text-foreground/60 text-lg">{t('premiumVerified')}</p>
         </div>
         
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

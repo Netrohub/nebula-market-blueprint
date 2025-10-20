@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { Facebook, Twitter, Instagram, Mail, Shield, Zap, Award } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
+  const { t } = useLanguage();
+  
   return (
     <footer className="border-t border-border/50 glass-card mt-auto relative overflow-hidden">
       {/* Background glow */}
@@ -41,30 +44,30 @@ const Footer = () => {
 
           {/* Marketplace */}
           <div>
-            <h3 className="font-bold mb-4 text-foreground">Marketplace</h3>
+            <h3 className="font-bold mb-4 text-foreground">{t('marketplace')}</h3>
             <ul className="space-y-3">
               <li>
                 <Link to="/products" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Products
+                  {t('products')}
                 </Link>
               </li>
               <li>
                 <Link to="/games" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Games
+                  {t('games')}
                 </Link>
               </li>
               <li>
                 <Link to="/leaderboard" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Leaderboard
+                  {t('leaderboard')}
                 </Link>
               </li>
               <li>
                 <Link to="/pricing" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Pricing
+                  {t('pricing')}
                 </Link>
               </li>
             </ul>
@@ -72,30 +75,30 @@ const Footer = () => {
 
           {/* Account */}
           <div>
-            <h3 className="font-bold mb-4 text-foreground">Account</h3>
+            <h3 className="font-bold mb-4 text-foreground">{t('myAccount')}</h3>
             <ul className="space-y-3">
               <li>
                 <Link to="/account" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Dashboard
+                  {t('dashboard')}
                 </Link>
               </li>
               <li>
                 <Link to="/seller/dashboard" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Sell on NXOLand
+                  {t('sellOnNexo')}
                 </Link>
               </li>
               <li>
                 <Link to="/account/orders" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Orders
+                  {t('orders')}
                 </Link>
               </li>
               <li>
                 <Link to="/account/wallet" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Wallet
+                  {t('wallet')}
                 </Link>
               </li>
             </ul>
@@ -103,30 +106,30 @@ const Footer = () => {
 
           {/* Legal */}
           <div>
-            <h3 className="font-bold mb-4 text-foreground">Legal & Support</h3>
+            <h3 className="font-bold mb-4 text-foreground">{t('legalAndSupport')}</h3>
             <ul className="space-y-3">
               <li>
                 <Link to="/terms" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Terms of Service
+                  {t('termsOfService')}
                 </Link>
               </li>
               <li>
                 <Link to="/privacy" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Privacy Policy
+                  {t('privacyPolicy')}
                 </Link>
               </li>
               <li>
                 <Link to="/refund-policy" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Refund Policy
+                  {t('refundPolicy')}
                 </Link>
               </li>
               <li>
                 <Link to="/disputes" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Dispute Center
+                  {t('disputeCenter')}
                 </Link>
               </li>
             </ul>
@@ -137,21 +140,21 @@ const Footer = () => {
         <div className="flex flex-wrap justify-center gap-8 py-8 border-t border-border/30">
           <div className="flex items-center gap-2 text-sm text-foreground/60">
             <Shield className="h-5 w-5 text-primary" />
-            <span>Secure Payments</span>
+            <span>{t('securePayments')}</span>
           </div>
           <div className="flex items-center gap-2 text-sm text-foreground/60">
             <Zap className="h-5 w-5 text-accent" />
-            <span>Instant Delivery</span>
+            <span>{t('instantAccess')}</span>
           </div>
           <div className="flex items-center gap-2 text-sm text-foreground/60">
             <Award className="h-5 w-5 text-primary" />
-            <span>Verified Sellers</span>
+            <span>{t('verifiedSellers')}</span>
           </div>
         </div>
         
         <div className="border-t border-border/30 pt-8 text-center">
           <p className="text-sm text-foreground/50">
-            © 2024 Nexo Marketplace. All rights reserved. Built with 💜 for gamers.
+            © 2024 Nexo Marketplace. {t('allRightsReserved')}. {t('builtForGamers')}
           </p>
         </div>
       </div>

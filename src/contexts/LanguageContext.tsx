@@ -193,6 +193,25 @@ const translations = {
     legal: 'Legal',
     termsOfService: 'Terms of Service',
     privacyPolicy: 'Privacy Policy',
+    
+    // Leaderboard
+    topPerformers: 'Top Performers',
+    leaderboardDesc: 'Discover the top sellers, most popular products, and active buyers in the Nexo community',
+    topSellers: 'Top Sellers',
+    topProducts: 'Top Products',
+    topBuyers: 'Top Buyers',
+    sales: 'sales',
+    totalRevenue: 'Total Revenue',
+    sold: 'sold',
+    purchases: 'purchases',
+    totalSpent: 'Total Spent',
+    by: 'by',
+    refundPolicy: 'Refund Policy',
+    disputeCenter: 'Dispute Center',
+    verifiedSellers: 'Verified Sellers',
+    builtForGamers: 'Built with 💜 for gamers',
+    sellOnNexo: 'Sell on Nexo',
+    legalAndSupport: 'Legal & Support',
   },
   ar: {
     // Navigation
@@ -378,6 +397,25 @@ const translations = {
     legal: 'قانوني',
     termsOfService: 'شروط الخدمة',
     privacyPolicy: 'سياسة الخصوصية',
+    
+    // Leaderboard
+    topPerformers: 'أفضل المؤدين',
+    leaderboardDesc: 'اكتشف أفضل البائعين والمنتجات الأكثر شعبية والمشترين النشطين في مجتمع نيكسو',
+    topSellers: 'أفضل البائعين',
+    topProducts: 'أفضل المنتجات',
+    topBuyers: 'أفضل المشترين',
+    sales: 'مبيعات',
+    totalRevenue: 'إجمالي الإيرادات',
+    sold: 'مباع',
+    purchases: 'مشتريات',
+    totalSpent: 'إجمالي الإنفاق',
+    by: 'بواسطة',
+    refundPolicy: 'سياسة الاسترداد',
+    disputeCenter: 'مركز النزاعات',
+    verifiedSellers: 'بائعون موثقون',
+    builtForGamers: 'مصنوع بـ 💜 للاعبين',
+    sellOnNexo: 'البيع على نيكسو',
+    legalAndSupport: 'القانونية والدعم',
   },
 };
 
