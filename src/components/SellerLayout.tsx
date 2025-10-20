@@ -6,20 +6,20 @@ import {
   LayoutDashboard, 
   Package, 
   ShoppingBag, 
-  Wallet, 
-  DollarSign,
-  BarChart3,
-  Plus
+  User,
+  CreditCard,
+  Bell,
+  BarChart3
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 const menuItems = [
   { path: "/seller/dashboard", icon: LayoutDashboard, label: "Dashboard" },
+  { path: "/seller/profile", icon: User, label: "Profile" },
   { path: "/seller/products", icon: Package, label: "Products" },
-  { path: "/seller/products/create", icon: Plus, label: "Create Product" },
   { path: "/seller/orders", icon: ShoppingBag, label: "Orders" },
-  { path: "/seller/wallet", icon: Wallet, label: "Wallet" },
-  { path: "/seller/payouts", icon: DollarSign, label: "Payouts" },
+  { path: "/seller/billing", icon: CreditCard, label: "Billing" },
+  { path: "/seller/notifications", icon: Bell, label: "Notifications" },
   { path: "/seller/analytics", icon: BarChart3, label: "Analytics" },
 ];
 

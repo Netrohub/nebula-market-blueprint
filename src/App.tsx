@@ -31,6 +31,9 @@ import SellerDashboard from "./pages/seller/Dashboard";
 import SellerProducts from "./pages/seller/Products";
 import CreateProduct from "./pages/seller/CreateProduct";
 import SellerOrders from "./pages/seller/Orders";
+import SellerProfilePage from "./pages/seller/Profile";
+import SellerBilling from "./pages/seller/Billing";
+import SellerNotifications from "./pages/seller/Notifications";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -61,15 +64,19 @@ const App = () => (
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/account" element={<Dashboard />} />
+          <Route path="/account/dashboard" element={<Dashboard />} />
           <Route path="/account/profile" element={<Profile />} />
           <Route path="/account/wallet" element={<Wallet />} />
           <Route path="/account/orders" element={<Orders />} />
           <Route path="/account/notifications" element={<Notifications />} />
           <Route path="/account/billing" element={<Billing />} />
           <Route path="/seller/dashboard" element={<SellerDashboard />} />
+          <Route path="/seller/profile" element={<SellerProfilePage />} />
           <Route path="/seller/products" element={<SellerProducts />} />
           <Route path="/seller/products/create" element={<CreateProduct />} />
           <Route path="/seller/orders" element={<SellerOrders />} />
+          <Route path="/seller/billing" element={<SellerBilling />} />
+          <Route path="/seller/notifications" element={<SellerNotifications />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
