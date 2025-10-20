@@ -89,6 +89,24 @@
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
   
+  /* RTL Support with Emoji Handling */
+  [dir="rtl"] {
+    direction: rtl;
+  }
+  
+  /* Ensure emojis display properly in RTL text */
+  [dir="rtl"] * {
+    unicode-bidi: plaintext;
+  }
+  
+  /* Keep emojis in correct position without flipping */
+  [dir="rtl"] img.emoji,
+  [dir="rtl"] .emoji {
+    display: inline-block;
+    direction: ltr;
+    unicode-bidi: embed;
+  }
+  
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
     @apply font-bold tracking-tight;
