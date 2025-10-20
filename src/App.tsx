@@ -20,8 +20,11 @@ import Profile from "./pages/account/Profile";
 import Wallet from "./pages/account/Wallet";
 import Orders from "./pages/account/Orders";
 import Notifications from "./pages/account/Notifications";
+import Billing from "./pages/account/Billing";
 import SellerDashboard from "./pages/seller/Dashboard";
 import SellerProducts from "./pages/seller/Products";
+import CreateProduct from "./pages/seller/CreateProduct";
+import SellerOrders from "./pages/seller/Orders";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -50,8 +53,11 @@ const App = () => (
           <Route path="/account/wallet" element={<Wallet />} />
           <Route path="/account/orders" element={<Orders />} />
           <Route path="/account/notifications" element={<Notifications />} />
+          <Route path="/account/billing" element={<Billing />} />
           <Route path="/seller/dashboard" element={<SellerDashboard />} />
           <Route path="/seller/products" element={<SellerProducts />} />
+          <Route path="/seller/products/create" element={<CreateProduct />} />
+          <Route path="/seller/orders" element={<SellerOrders />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
