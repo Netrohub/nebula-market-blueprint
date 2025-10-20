@@ -27,6 +27,8 @@ import Wallet from "./pages/account/Wallet";
 import Orders from "./pages/account/Orders";
 import Notifications from "./pages/account/Notifications";
 import Billing from "./pages/account/Billing";
+import KYC from "./pages/account/KYC";
+import PhoneVerification from "./pages/account/PhoneVerification";
 import SellerDashboard from "./pages/seller/Dashboard";
 import SellerProducts from "./pages/seller/Products";
 import CreateProduct from "./pages/seller/CreateProduct";
@@ -70,6 +72,8 @@ const App = () => (
           <Route path="/account/orders" element={<Orders />} />
           <Route path="/account/notifications" element={<Notifications />} />
           <Route path="/account/billing" element={<Billing />} />
+          <Route path="/account/kyc" element={<KYC />} />
+          <Route path="/account/phone-verification" element={<PhoneVerification />} />
           <Route path="/seller/dashboard" element={<SellerDashboard />} />
           <Route path="/seller/profile" element={<SellerProfilePage />} />
           <Route path="/seller/products" element={<SellerProducts />} />
