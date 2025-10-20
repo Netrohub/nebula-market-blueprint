@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/select";
 import { Upload, X, Gamepad2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const gamingPlatforms = [
   "Steam",
@@ -49,6 +50,7 @@ const popularGames = [
 const ListGamingAccount = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { t } = useLanguage();
   const [images, setImages] = useState<string[]>([]);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [agreedToNonRefund, setAgreedToNonRefund] = useState(false);
@@ -58,16 +60,16 @@ const ListGamingAccount = () => {
     
     if (!agreedToTerms || !agreedToNonRefund) {
       toast({
-        title: "Terms Required",
-        description: "Please agree to all terms and conditions",
+        title: t('termsRequired'),
+        description: t('agreeToTerms'),
         variant: "destructive",
       });
       return;
     }
 
     toast({
-      title: "Account Listed Successfully",
-      description: "Your gaming account has been submitted for review",
+      title: t('accountListedSuccess'),
+      description: t('accountSubmittedReview'),
     });
     
     navigate("/seller/products");
@@ -81,24 +83,24 @@ const ListGamingAccount = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-primary/30">
             <Gamepad2 className="h-4 w-4 text-primary animate-pulse" />
             <span className="text-sm font-medium bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Gaming Account Listing
+              {t('gamingAccounts')}
             </span>
           </div>
           <h1 className="text-3xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            List Gaming Account
+            {t('listGamingAccount')}
           </h1>
-          <p className="text-foreground/60">Fill in the details to list your gaming account</p>
+          <p className="text-foreground/60">{t('sellerOnboardingDesc')}</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Basic Information */}
           <Card className="glass-card p-6">
-            <h2 className="text-xl font-bold text-foreground mb-6">Account Information</h2>
+            <h2 className="text-xl font-bold text-foreground mb-6">{t('accountInformation')}</h2>
             <div className="space-y-5">
               {/* Title */}
               <div className="space-y-2">
                 <Label htmlFor="title" className="text-foreground">
-                  Title *
+                  {t('title')} *
                 </Label>
                 <Input
                   id="title"
@@ -111,11 +113,11 @@ const ListGamingAccount = () => {
               {/* Game */}
               <div className="space-y-2">
                 <Label htmlFor="game" className="text-foreground">
-                  Game *
+                  {t('game')} *
                 </Label>
                 <Select required>
                   <SelectTrigger className="glass-card border-border/50 bg-background">
-                    <SelectValue placeholder="Select game" />
+                    <SelectValue placeholder={t('selectGame')} />
                   </SelectTrigger>
                   <SelectContent className="glass-card bg-card border-border z-50">
                     {popularGames.map((game) => (
@@ -131,11 +133,11 @@ const ListGamingAccount = () => {
               {/* Platform */}
               <div className="space-y-2">
                 <Label htmlFor="platform" className="text-foreground">
-                  Platform *
+                  {t('platform')} *
                 </Label>
                 <Select required>
                   <SelectTrigger className="glass-card border-border/50 bg-background">
-                    <SelectValue placeholder="Select platform" />
+                    <SelectValue placeholder={t('selectPlatform')} />
                   </SelectTrigger>
                   <SelectContent className="glass-card bg-card border-border z-50">
                     {gamingPlatforms.map((platform) => (
@@ -150,16 +152,16 @@ const ListGamingAccount = () => {
               {/* Description */}
               <div className="space-y-2">
                 <Label htmlFor="description" className="text-foreground">
-                  Account Description *
+                  {t('accountDescription')} *
                 </Label>
                 <Textarea
                   id="description"
-                  placeholder="Provide detailed description of your account"
+                  placeholder={t('provideDescription')}
                   className="glass-card border-border/50 focus:border-primary/50 min-h-[120px]"
                   required
                 />
                 <p className="text-xs text-foreground/50">
-                  Include details about games, levels, achievements, skins, etc.
+                  {t('configInstructionsHelp')}
                 </p>
               </div>
             </div>
@@ -298,7 +300,7 @@ const ListGamingAccount = () => {
 
           {/* Terms & Conditions */}
           <Card className="glass-card p-6">
-            <h2 className="text-xl font-bold text-foreground mb-6">Terms & Conditions</h2>
+            <h2 className="text-xl font-bold text-foreground mb-6">{t('termsAndConditions')}</h2>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
                 <Checkbox 
@@ -311,7 +313,7 @@ const ListGamingAccount = () => {
                   htmlFor="terms1"
                   className="text-sm text-foreground/70 leading-relaxed cursor-pointer"
                 >
-                  I pledge to only advertise available products and not to sell prohibited or inappropriate products
+                  {t('term1')}
                 </label>
               </div>
 
@@ -326,7 +328,7 @@ const ListGamingAccount = () => {
                   htmlFor="terms2"
                   className="text-sm text-foreground/70 leading-relaxed cursor-pointer"
                 >
-                  I fully assume legal liability for any lawsuit arising from the date of sale or breach of the legal buyer and seller agreement which guarantees the right to withdraw from the sale of electronic crimes
+                  {t('term2')}
                 </label>
               </div>
             </div>
@@ -339,7 +341,7 @@ const ListGamingAccount = () => {
               className="w-full btn-glow h-12 text-base"
               disabled={!agreedToTerms || !agreedToNonRefund}
             >
-              Submit Account
+              {t('submitAccount')}
             </Button>
           </Card>
         </form>

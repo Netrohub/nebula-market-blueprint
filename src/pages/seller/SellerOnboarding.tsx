@@ -13,8 +13,11 @@ import {
   Shield,
   Zap
 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const SellerOnboarding = () => {
+  const { t } = useLanguage();
+  
   return (
     <div className="min-h-screen flex flex-col relative">
       <Starfield />
@@ -30,18 +33,18 @@ const SellerOnboarding = () => {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-primary/30 mb-6">
                 <Shield className="h-4 w-4 text-primary animate-pulse" />
                 <span className="text-sm font-medium bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  Trusted by 10,000+ Sellers
+                  {t('trustedBy')}
                 </span>
               </div>
               
               <h1 className="text-5xl md:text-6xl font-black tracking-tight leading-tight mb-6">
-                Start Selling on{" "}
+                {t('startSellingOn')}{" "}
                 <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
                   Nexo
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto leading-relaxed mb-8">
-                Choose what you want to sell and get started in minutes. No upfront costs, just list and earn.
+                {t('sellerOnboardingDesc')}
               </p>
               
               <div className="flex flex-wrap justify-center gap-6 mb-12">
@@ -49,19 +52,19 @@ const SellerOnboarding = () => {
                   <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
                     <Zap className="h-4 w-4 text-primary" />
                   </div>
-                  <span>Quick Setup</span>
+                  <span>{t('quickSetup')}</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-foreground/70">
                   <div className="p-2 rounded-lg bg-accent/10 border border-accent/20">
                     <Shield className="h-4 w-4 text-accent" />
                   </div>
-                  <span>Secure Payments</span>
+                  <span>{t('securePayments')}</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-foreground/70">
                   <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
                     <Trophy className="h-4 w-4 text-primary" />
                   </div>
-                  <span>Low Fees</span>
+                  <span>{t('lowFees')}</span>
                 </div>
               </div>
             </div>
@@ -69,7 +72,7 @@ const SellerOnboarding = () => {
             {/* Product Type Selection */}
             <div className="max-w-5xl mx-auto">
               <h2 className="text-2xl font-bold text-center text-foreground mb-8">
-                What would you like to sell?
+                {t('chooseWhatToSell')}
               </h2>
               
               <div className="grid md:grid-cols-2 gap-6">
@@ -82,10 +85,10 @@ const SellerOnboarding = () => {
                     
                     <div className="space-y-3">
                       <h3 className="text-2xl font-bold text-foreground">
-                        Social Media Accounts
+                        {t('socialMediaAccounts')}
                       </h3>
                       <p className="text-foreground/60">
-                        Sell Instagram, TikTok, YouTube, Twitter, and other social media accounts
+                        {t('sellSocialDesc')}
                       </p>
                     </div>
 
@@ -96,17 +99,17 @@ const SellerOnboarding = () => {
                       </div>
                       <div className="flex items-center gap-3 text-sm text-foreground/70">
                         <Shield className="h-4 w-4 text-primary" />
-                        <span>Verified account protection</span>
+                        <span>{t('verifiedAccounts')}</span>
                       </div>
                       <div className="flex items-center gap-3 text-sm text-foreground/70">
                         <Zap className="h-4 w-4 text-primary" />
-                        <span>Quick listing process</span>
+                        <span>{t('quickSetup')}</span>
                       </div>
                     </div>
 
                     <Button asChild className="btn-glow w-full" size="lg">
                       <Link to="/seller/list/social">
-                        List Social Account
+                        {t('listSocialAccount')}
                         <ArrowRight className="h-4 w-4 ml-2" />
                       </Link>
                     </Button>
@@ -122,10 +125,10 @@ const SellerOnboarding = () => {
                     
                     <div className="space-y-3">
                       <h3 className="text-2xl font-bold text-foreground">
-                        Gaming Accounts
+                        {t('gamingAccounts')}
                       </h3>
                       <p className="text-foreground/60">
-                        Sell Steam, PlayStation, Xbox, Epic Games, and other gaming accounts
+                        {t('sellGamingDesc')}
                       </p>
                     </div>
 
@@ -136,17 +139,17 @@ const SellerOnboarding = () => {
                       </div>
                       <div className="flex items-center gap-3 text-sm text-foreground/70">
                         <Trophy className="h-4 w-4 text-primary" />
-                        <span>Include game library & achievements</span>
+                        <span>{t('instantAccess')}</span>
                       </div>
                       <div className="flex items-center gap-3 text-sm text-foreground/70">
                         <Shield className="h-4 w-4 text-primary" />
-                        <span>Secure account transfer</span>
+                        <span>{t('securePayments')}</span>
                       </div>
                     </div>
 
                     <Button asChild className="btn-glow w-full" size="lg">
                       <Link to="/seller/list/gaming">
-                        List Gaming Account
+                        {t('listGamingAccount')}
                         <ArrowRight className="h-4 w-4 ml-2" />
                       </Link>
                     </Button>
@@ -159,34 +162,34 @@ const SellerOnboarding = () => {
             <div className="max-w-4xl mx-auto mt-16">
               <Card className="glass-card p-8 border border-primary/30">
                 <h3 className="text-xl font-bold text-foreground mb-6 text-center">
-                  Why Sell on Nexo?
+                  {t('whySellOnNexo')}
                 </h3>
                 <div className="grid md:grid-cols-3 gap-6">
                   <div className="text-center space-y-2">
                     <div className="inline-flex p-3 rounded-lg bg-primary/10 border border-primary/20 mb-2">
                       <Zap className="h-6 w-6 text-primary" />
                     </div>
-                    <h4 className="font-semibold text-foreground">Fast Payouts</h4>
+                    <h4 className="font-semibold text-foreground">{t('fastPayouts')}</h4>
                     <p className="text-sm text-foreground/60">
-                      Get paid quickly with multiple withdrawal options
+                      {t('fastPayoutsDesc')}
                     </p>
                   </div>
                   <div className="text-center space-y-2">
                     <div className="inline-flex p-3 rounded-lg bg-primary/10 border border-primary/20 mb-2">
                       <Shield className="h-6 w-6 text-primary" />
                     </div>
-                    <h4 className="font-semibold text-foreground">Buyer Protection</h4>
+                    <h4 className="font-semibold text-foreground">{t('buyerProtection')}</h4>
                     <p className="text-sm text-foreground/60">
-                      Secure transactions with built-in dispute resolution
+                      {t('buyerProtectionDesc')}
                     </p>
                   </div>
                   <div className="text-center space-y-2">
                     <div className="inline-flex p-3 rounded-lg bg-primary/10 border border-primary/20 mb-2">
                       <Users className="h-6 w-6 text-primary" />
                     </div>
-                    <h4 className="font-semibold text-foreground">Large Audience</h4>
+                    <h4 className="font-semibold text-foreground">{t('largeAudience')}</h4>
                     <p className="text-sm text-foreground/60">
-                      Reach thousands of active buyers daily
+                      {t('largeAudienceDesc')}
                     </p>
                   </div>
                 </div>
