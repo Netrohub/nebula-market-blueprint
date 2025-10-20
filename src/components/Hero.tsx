@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ShoppingBag, Sparkles, Shield, Zap } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -33,13 +34,17 @@ const Hero = () => {
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <Button size="lg" className="gap-2 btn-glow text-base px-8 py-6">
-              <ShoppingBag className="h-5 w-5" />
-              Explore Products
-              <ArrowRight className="h-4 w-4" />
+            <Button asChild size="lg" className="gap-2 btn-glow text-base px-8 py-6">
+              <Link to="/products">
+                <ShoppingBag className="h-5 w-5" />
+                Explore Products
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </Button>
-            <Button size="lg" variant="outline" className="gap-2 glass-card border-primary/30 hover:border-primary/50 text-base px-8 py-6">
-              Become a Seller
+            <Button asChild size="lg" variant="outline" className="gap-2 glass-card border-primary/30 hover:border-primary/50 text-base px-8 py-6">
+              <Link to="/seller/dashboard">
+                Become a Seller
+              </Link>
             </Button>
           </div>
           
