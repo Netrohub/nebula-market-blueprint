@@ -17,7 +17,7 @@ const Footer = () => {
                 <span className="text-xl font-bold text-primary-foreground">N</span>
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                NXOLand
+                Nexo
               </span>
             </div>
             <p className="text-sm text-foreground/60 leading-relaxed">
@@ -151,7 +151,7 @@ const Footer = () => {
         
         <div className="border-t border-border/30 pt-8 text-center">
           <p className="text-sm text-foreground/50">
-            © 2024 NXOLand Marketplace. All rights reserved. Built with 💜 for gamers.
+            © 2024 Nexo Marketplace. All rights reserved. Built with 💜 for gamers.
           </p>
         </div>
       </div>

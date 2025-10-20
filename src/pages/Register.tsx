@@ -28,7 +28,7 @@ const Register = () => {
                   Create Account
                 </h1>
                 <p className="text-foreground/60">
-                  Join NXOLand marketplace today
+                  Join Nexo marketplace today
                 </p>
               </div>
 

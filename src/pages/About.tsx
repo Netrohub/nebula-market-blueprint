@@ -57,7 +57,7 @@ const About = () => {
                 Empowering Digital Commerce
               </h1>
               <p className="text-xl text-foreground/60 leading-relaxed">
-                NXOLand is the premier marketplace for digital gaming assets. We connect buyers and sellers in a secure, transparent environment where trust and quality come first.
+                Nexo is the premier marketplace for digital gaming assets. We connect buyers and sellers in a secure, transparent environment where trust and quality come first.
               </p>
             </div>
           </div>
@@ -104,13 +104,13 @@ const About = () => {
 
               <Card className="glass-card p-8 md:p-12 space-y-6 text-foreground/70 leading-relaxed">
                 <p className="text-lg">
-                  Founded in 2024, NXOLand was born from a simple observation: the digital gaming marketplace was fragmented, insecure, and lacked the trust that modern commerce demands.
+                  Founded in 2024, Nexo was born from a simple observation: the digital gaming marketplace was fragmented, insecure, and lacked the trust that modern commerce demands.
                 </p>
-                <p className="text-lg">
-                  We set out to create a platform where gamers could buy and sell digital assets with complete confidence. By implementing cutting-edge security measures, rigorous verification processes, and a community-first approach, we've built a marketplace that serves over 50,000 active users across 120+ countries.
+                <p className="text-muted-foreground leading-relaxed">
+                  We set out to change that. By combining cutting-edge technology, rigorous verification processes, and a customer-first approach, we created a platform where trading digital assets is as simple and secure as it should be.
                 </p>
-                <p className="text-lg">
-                  Today, NXOLand is more than just a marketplace - it's a community. A place where gamers connect, trade grows, and digital commerce thrives in a safe, transparent environment.
+                <p className="text-muted-foreground leading-relaxed">
+                  Today, Nexo is more than just a marketplace - it's a community. A place where gamers connect, trade grows, and digital commerce thrives in a safe, transparent environment.
                 </p>
               </Card>
             </div>

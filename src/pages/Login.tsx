@@ -28,7 +28,7 @@ const Login = () => {
                   Welcome Back
                 </h1>
                 <p className="text-foreground/60">
-                  Sign in to your NXOLand account
+                  Sign in to your Nexo account
                 </p>
               </div>
 

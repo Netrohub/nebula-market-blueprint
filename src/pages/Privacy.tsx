@@ -132,8 +132,8 @@ const Privacy = () => {
               <h2 className="text-2xl font-bold text-foreground mb-4">11. Contact Us</h2>
               <p>
                 If you have any questions about this Privacy Policy, please contact us at{" "}
-                <a href="mailto:privacy@nxoland.com" className="text-primary hover:text-primary/80">
-                  privacy@nxoland.com
+                <a href="mailto:privacy@nexo.com" className="text-primary hover:text-primary/80">
+                  privacy@nexo.com
                 </a>
               </p>
             </section>

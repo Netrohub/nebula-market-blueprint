@@ -16,7 +16,7 @@ const Hero = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-primary/30 mb-4">
             <Sparkles className="h-4 w-4 text-primary animate-pulse" />
             <span className="text-sm font-medium bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Welcome to NXOLand Marketplace
+              Welcome to Nexo Marketplace
             </span>
           </div>
           

@@ -22,14 +22,14 @@ const Terms = () => {
             <section>
               <h2 className="text-2xl font-bold text-foreground mb-4">1. Acceptance of Terms</h2>
               <p>
-                By accessing and using NXOLand Marketplace ("the Platform"), you accept and agree to be bound by the terms and provisions of this agreement. If you do not agree to abide by the above, please do not use this service.
+                By accessing and using Nexo Marketplace ("the Platform"), you accept and agree to be bound by the terms and provisions of this agreement. If you do not agree to abide by the above, please do not use this service.
               </p>
             </section>
 
             <section>
               <h2 className="text-2xl font-bold text-foreground mb-4">2. Use License</h2>
               <p className="mb-4">
-                Permission is granted to temporarily download one copy of the materials on NXOLand Marketplace for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
+                Permission is granted to temporarily download one copy of the materials on Nexo Marketplace for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
               </p>
               <ul className="list-disc list-inside space-y-2 ml-4">
                 <li>Modify or copy the materials</li>
@@ -101,14 +101,14 @@ const Terms = () => {
             <section>
               <h2 className="text-2xl font-bold text-foreground mb-4">7. Fees and Payments</h2>
               <p>
-                NXOLand charges a service fee on all transactions. Sellers are responsible for all applicable fees. Payment processing is handled securely through our payment partners. All fees are non-refundable unless otherwise stated.
+                Nexo charges a service fee on all transactions. Sellers are responsible for all applicable fees. Payment processing is handled securely through our payment partners. All fees are non-refundable unless otherwise stated.
               </p>
             </section>
 
             <section>
               <h2 className="text-2xl font-bold text-foreground mb-4">8. Intellectual Property</h2>
               <p>
-                The Platform and its original content, features, and functionality are owned by NXOLand and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws.
+                The Platform and its original content, features, and functionality are owned by Nexo and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws.
               </p>
             </section>
 
@@ -122,7 +122,7 @@ const Terms = () => {
             <section>
               <h2 className="text-2xl font-bold text-foreground mb-4">10. Limitation of Liability</h2>
               <p>
-                In no event shall NXOLand, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses.
+                In no event shall Nexo, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses.
               </p>
             </section>
 
@@ -137,8 +137,8 @@ const Terms = () => {
               <h2 className="text-2xl font-bold text-foreground mb-4">12. Contact Us</h2>
               <p>
                 If you have any questions about these Terms, please contact us at{" "}
-                <a href="mailto:legal@nxoland.com" className="text-primary hover:text-primary/80">
-                  legal@nxoland.com
+                <a href="mailto:legal@nexo.com" className="text-primary hover:text-primary/80">
+                  legal@nexo.com
                 </a>
               </p>
             </section>

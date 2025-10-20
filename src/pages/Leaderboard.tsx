@@ -144,7 +144,7 @@ const Leaderboard = () => {
                 Leaderboard
               </h1>
               <p className="text-lg text-foreground/60">
-                Discover the top sellers, most popular products, and active buyers in the NXOLand community
+                Discover the top sellers, most popular products, and active buyers in the Nexo community
               </p>
             </div>
           </div>
