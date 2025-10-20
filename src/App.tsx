@@ -41,6 +41,10 @@ import SellerOnboarding from "./pages/seller/SellerOnboarding";
 import ListGamingAccount from "./pages/seller/ListGamingAccount";
 import ListSocialAccount from "./pages/seller/ListSocialAccount";
 import NotFound from "./pages/NotFound";
+import DisputeList from "./pages/disputes/DisputeList";
+import CreateDispute from "./pages/disputes/CreateDispute";
+import DisputeDetail from "./pages/disputes/DisputeDetail";
+import AdminDisputes from "./pages/disputes/AdminDisputes";
 
 const queryClient = new QueryClient();
 
@@ -89,6 +93,10 @@ const App = () => (
           <Route path="/seller/orders" element={<SellerOrders />} />
           <Route path="/seller/billing" element={<SellerBilling />} />
           <Route path="/seller/notifications" element={<SellerNotifications />} />
+          <Route path="/disputes" element={<DisputeList />} />
+          <Route path="/disputes/create" element={<CreateDispute />} />
+          <Route path="/disputes/:id" element={<DisputeDetail />} />
+          <Route path="/admin/disputes" element={<AdminDisputes />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
