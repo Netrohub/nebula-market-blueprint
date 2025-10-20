@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ShoppingBag, Sparkles, Shield, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Hero = () => {
+  const { t } = useLanguage();
+  
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
       {/* Cosmic gradient background */}
@@ -17,19 +20,19 @@ const Hero = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-primary/30 mb-4">
             <Sparkles className="h-4 w-4 text-primary animate-pulse" />
             <span className="text-sm font-medium bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Welcome to Nexo Marketplace
+              {t('welcomeMessage')}
             </span>
           </div>
           
           <div className="space-y-6 max-w-4xl">
             <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-tight">
-              Your Digital Gaming{" "}
+              {t('heroTitle')}{" "}
               <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-pulse">
-                Marketplace
+                
               </span>
             </h1>
             <p className="text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto leading-relaxed">
-              Buy and sell game accounts, social media profiles, and digital products in a secure, trusted marketplace powered by cutting-edge technology.
+              {t('heroDescription')}
             </p>
           </div>
           
@@ -37,13 +40,13 @@ const Hero = () => {
             <Button asChild size="lg" className="gap-2 btn-glow text-base px-8 py-6">
               <Link to="/products">
                 <ShoppingBag className="h-5 w-5" />
-                Explore Products
+                {t('exploreProducts')}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="gap-2 glass-card border-primary/30 hover:border-primary/50 text-base px-8 py-6">
               <Link to="/seller/onboarding">
-                Become a Seller
+                {t('becomeASeller')}
               </Link>
             </Button>
           </div>
@@ -54,19 +57,19 @@ const Hero = () => {
               <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
                 <Shield className="h-4 w-4 text-primary" />
               </div>
-              <span>Secure Transactions</span>
+              <span>{t('securePayments')}</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-foreground/70">
               <div className="p-2 rounded-lg bg-accent/10 border border-accent/20">
                 <Zap className="h-4 w-4 text-accent" />
               </div>
-              <span>Instant Delivery</span>
+              <span>{t('instantAccess')}</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-foreground/70">
               <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
                 <Sparkles className="h-4 w-4 text-primary" />
               </div>
-              <span>24/7 Support</span>
+              <span>{t('support247')}</span>
             </div>
           </div>
         </div>

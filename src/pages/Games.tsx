@@ -14,6 +14,7 @@ import {
   TrendingUp,
   Sparkles
 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const gamePlatforms = [
   { 
@@ -112,6 +113,7 @@ const featuredAccounts = [
 ];
 
 const Games = () => {
+  const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
 
@@ -150,15 +152,15 @@ const Games = () => {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-primary/30 mb-4">
                 <Gamepad2 className="h-4 w-4 text-primary animate-pulse" />
                 <span className="text-sm font-medium bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  Gaming Marketplace
+                  {t('gamingMarketplace')}
                 </span>
               </div>
               
               <h1 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Game Accounts
+                {t('gameAccounts')}
               </h1>
               <p className="text-lg text-foreground/60">
-                Buy premium game accounts across all major platforms. Secure, verified, and ready to play.
+                {t('gameAccountsDesc')}
               </p>
 
               {/* Search Bar */}
@@ -167,14 +169,14 @@ const Games = () => {
                   <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-primary/70" />
                   <Input
                     type="search"
-                    placeholder="Search for game accounts, platforms, or titles..."
+                    placeholder={t('searchGames')}
                     className="w-full pl-12 pr-4 h-14 glass-card border-primary/30 focus:border-primary/50 text-base"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
                   <Button size="sm" className="absolute right-2 top-1/2 -translate-y-1/2 btn-glow">
                     <Filter className="h-4 w-4 mr-2" />
-                    Filters
+                    {t('filters')}
                   </Button>
                 </div>
               </div>
@@ -185,19 +187,19 @@ const Games = () => {
                   <p className="text-3xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                     5,000+
                   </p>
-                  <p className="text-sm text-foreground/60">Active Listings</p>
+                  <p className="text-sm text-foreground/60">{t('activeListings')}</p>
                 </div>
                 <div className="text-center">
                   <p className="text-3xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                     98%
                   </p>
-                  <p className="text-sm text-foreground/60">Success Rate</p>
+                  <p className="text-sm text-foreground/60">{t('successRate')}</p>
                 </div>
                 <div className="text-center">
                   <p className="text-3xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                     24/7
                   </p>
-                  <p className="text-sm text-foreground/60">Support</p>
+                  <p className="text-sm text-foreground/60">{t('support247')}</p>
                 </div>
               </div>
             </div>
@@ -209,9 +211,9 @@ const Games = () => {
           <div className="container mx-auto px-4">
             <div className="mb-12 text-center space-y-3">
               <h2 className="text-4xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Browse by Platform
+                {t('browseByPlatform')}
               </h2>
-              <p className="text-foreground/60 text-lg">Choose your gaming platform</p>
+              <p className="text-foreground/60 text-lg">{t('choosePlatform')}</p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -235,7 +237,7 @@ const Games = () => {
                     <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
                       {platform.count}
                     </Badge>
-                    <span className="text-xs text-foreground/50">accounts</span>
+                    <span className="text-xs text-foreground/50">{t('accounts')}</span>
                   </div>
                 </Card>
               ))}
@@ -251,13 +253,13 @@ const Games = () => {
             <div className="mb-12 flex items-center justify-between">
               <div>
                 <h2 className="text-4xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-2">
-                  Featured Accounts
+                  {t('featuredAccounts')}
                 </h2>
-                <p className="text-foreground/60 text-lg">Premium verified accounts</p>
+                <p className="text-foreground/60 text-lg">{t('premiumVerified')}</p>
               </div>
               <Button variant="outline" className="glass-card border-primary/30 hover:border-primary/50 gap-2">
                 <TrendingUp className="h-4 w-4" />
-                View All
+                {t('viewAll')}
               </Button>
             </div>
 
@@ -283,7 +285,7 @@ const Games = () => {
               </div>
             ) : (
               <div className="text-center py-12">
-                <p className="text-foreground/60 text-lg">No accounts found matching your search.</p>
+                <p className="text-foreground/60 text-lg">{t('noProductsFound')}</p>
               </div>
             )}
           </div>
@@ -297,27 +299,27 @@ const Games = () => {
                 <div className="inline-flex p-4 rounded-xl glass-card border border-primary/30 mb-2">
                   <Sparkles className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="font-bold text-xl text-foreground">Verified Accounts</h3>
+                <h3 className="font-bold text-xl text-foreground">{t('verifiedAccounts')}</h3>
                 <p className="text-sm text-foreground/60">
-                  All accounts are verified and checked before listing
+                  {t('verifiedAccountsDesc')}
                 </p>
               </div>
               <div className="text-center space-y-3">
                 <div className="inline-flex p-4 rounded-xl glass-card border border-accent/30 mb-2">
                   <Gamepad2 className="h-8 w-8 text-accent" />
                 </div>
-                <h3 className="font-bold text-xl text-foreground">Instant Access</h3>
+                <h3 className="font-bold text-xl text-foreground">{t('instantAccess')}</h3>
                 <p className="text-sm text-foreground/60">
-                  Get your account details immediately after purchase
+                  {t('instantAccessDesc')}
                 </p>
               </div>
               <div className="text-center space-y-3">
                 <div className="inline-flex p-4 rounded-xl glass-card border border-primary/30 mb-2">
                   <TrendingUp className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="font-bold text-xl text-foreground">Money Back</h3>
+                <h3 className="font-bold text-xl text-foreground">{t('moneyBack')}</h3>
                 <p className="text-sm text-foreground/60">
-                  7-day money back guarantee on all purchases
+                  {t('moneyBackDesc')}
                 </p>
               </div>
             </div>

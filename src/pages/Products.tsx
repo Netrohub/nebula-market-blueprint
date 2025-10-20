@@ -21,6 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const products = [
   {
@@ -133,6 +134,7 @@ const priceRanges = [
 ];
 
 const Products = () => {
+  const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all-products");
   const [selectedPriceRange, setSelectedPriceRange] = useState("all-prices");
@@ -228,10 +230,10 @@ const Products = () => {
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto">
               <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4 text-center">
-                All Products
+                {t('allProducts')}
               </h1>
               <p className="text-center text-foreground/60 mb-8">
-                Browse thousands of verified digital products and accounts
+                {t('browseProducts')}
               </p>
 
               {/* Search Bar */}
@@ -239,7 +241,7 @@ const Products = () => {
                 <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-primary/70" />
                 <Input
                   type="search"
-                  placeholder="Search for products, accounts, or services..."
+                  placeholder={t('searchPlaceholder')}
                   className="w-full pl-12 pr-4 h-12 glass-card border-primary/30 focus:border-primary/50"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
@@ -258,7 +260,7 @@ const Products = () => {
                 <div className="flex flex-wrap gap-3 items-center">
                   <Button variant="outline" size="sm" className="glass-card border-primary/30">
                     <SlidersHorizontal className="h-4 w-4 mr-2" />
-                    Filters
+                    {t('filters')}
                   </Button>
                   
                   <Select value={selectedCategory} onValueChange={setSelectedCategory}>
@@ -291,14 +293,14 @@ const Products = () => {
                 <div className="flex items-center gap-3">
                   <Select value={sortBy} onValueChange={setSortBy}>
                     <SelectTrigger className="w-[180px] glass-card border-primary/30">
-                      <SelectValue placeholder="Sort by" />
+                      <SelectValue placeholder={t('sortBy')} />
                     </SelectTrigger>
                     <SelectContent className="glass-card">
-                      <SelectItem value="featured">Featured</SelectItem>
-                      <SelectItem value="price-low">Price: Low to High</SelectItem>
-                      <SelectItem value="price-high">Price: High to Low</SelectItem>
-                      <SelectItem value="rating">Highest Rated</SelectItem>
-                      <SelectItem value="newest">Newest First</SelectItem>
+                      <SelectItem value="featured">{t('featured')}</SelectItem>
+                      <SelectItem value="price-low">{t('priceLowToHigh')}</SelectItem>
+                      <SelectItem value="price-high">{t('priceHighToLow')}</SelectItem>
+                      <SelectItem value="rating">{t('highestRated')}</SelectItem>
+                      <SelectItem value="newest">{t('newestFirst')}</SelectItem>
                     </SelectContent>
                   </Select>
 
@@ -334,7 +336,7 @@ const Products = () => {
             {/* Results Count */}
             <div className="mb-6 flex items-center justify-between">
               <p className="text-foreground/60">
-                Showing <span className="text-foreground font-semibold">{filteredAndSortedProducts.length}</span> products
+                {t('showing')} <span className="text-foreground font-semibold">{filteredAndSortedProducts.length}</span> {t('productsText')}
               </p>
             </div>
 
@@ -347,14 +349,14 @@ const Products = () => {
               </div>
             ) : (
               <div className="text-center py-12">
-                <p className="text-foreground/60 text-lg">No products found matching your filters.</p>
+                <p className="text-foreground/60 text-lg">{t('noProductsFound')}</p>
               </div>
             )}
 
             {/* Load More */}
             <div className="mt-12 text-center">
               <Button size="lg" className="btn-glow">
-                Load More Products
+                {t('loadMore')}
                 <ChevronDown className="h-4 w-4 ml-2" />
               </Button>
             </div>
