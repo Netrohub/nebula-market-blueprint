@@ -6,20 +6,29 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
 import { 
   Smartphone,
   Send,
   CheckCircle2,
   ArrowLeft,
-  Shield
+  Shield,
+  ChevronDown,
+  Search
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
 const countries = [
   { code: 'US', name: 'United States', dialCode: '+1', flag: '🇺🇸' },
@@ -66,6 +75,7 @@ const PhoneVerification = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [otp, setOtp] = useState(['', '', '', '', '', '']);
   const [isLoading, setIsLoading] = useState(false);
+  const [countryOpen, setCountryOpen] = useState(false);
 
   const fullPhoneNumber = `${selectedCountry.dialCode} ${phoneNumber}`;
 
@@ -181,57 +191,68 @@ const PhoneVerification = () => {
 
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="country" className="text-foreground">
-                  Country
-                </Label>
-                <Select 
-                  value={selectedCountry.code}
-                  onValueChange={(code) => {
-                    const country = countries.find(c => c.code === code);
-                    if (country) setSelectedCountry(country);
-                  }}
-                >
-                  <SelectTrigger className="glass-card border-border/50 focus:border-primary/50">
-                    <SelectValue>
-                      <div className="flex items-center gap-2">
-                        <span className="text-2xl">{selectedCountry.flag}</span>
-                        <span className="font-medium">{selectedCountry.name}</span>
-                        <span className="text-foreground/60">({selectedCountry.dialCode})</span>
-                      </div>
-                    </SelectValue>
-                  </SelectTrigger>
-                  <SelectContent className="glass-card border-border/50 max-h-[300px]">
-                    {countries.map((country) => (
-                      <SelectItem key={country.code} value={country.code}>
-                        <div className="flex items-center gap-2">
-                          <span className="text-xl">{country.flag}</span>
-                          <span>{country.name}</span>
-                          <span className="text-foreground/60">{country.dialCode}</span>
-                        </div>
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
                 <Label htmlFor="phone" className="text-foreground">
                   Phone Number
                 </Label>
-                <div className="flex gap-2">
-                  <div className="flex items-center gap-2 px-3 rounded-lg glass-card border border-border/50 bg-muted/30">
-                    <span className="text-xl">{selectedCountry.flag}</span>
-                    <span className="font-medium text-foreground">{selectedCountry.dialCode}</span>
-                  </div>
+                <div className="flex gap-0 rounded-lg overflow-hidden glass-card border border-border/50 focus-within:border-primary/50 transition-colors">
+                  {/* Country Selector */}
+                  <Popover open={countryOpen} onOpenChange={setCountryOpen}>
+                    <PopoverTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        role="combobox"
+                        aria-expanded={countryOpen}
+                        className="h-auto px-3 py-2.5 rounded-none border-r border-border/30 hover:bg-muted/50"
+                      >
+                        <span className="text-xl mr-2">{selectedCountry.flag}</span>
+                        <span className="font-medium">{selectedCountry.dialCode}</span>
+                        <ChevronDown className="ml-2 h-4 w-4 opacity-50" />
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-[320px] p-0 glass-card border-border/50" align="start">
+                      <Command className="bg-transparent">
+                        <div className="flex items-center border-b border-border/30 px-3">
+                          <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
+                          <CommandInput 
+                            placeholder="Search country..." 
+                            className="h-11 bg-transparent border-0 focus:ring-0"
+                          />
+                        </div>
+                        <CommandList className="max-h-[300px]">
+                          <CommandEmpty>No country found.</CommandEmpty>
+                          <CommandGroup>
+                            {countries.map((country) => (
+                              <CommandItem
+                                key={country.code}
+                                value={`${country.name} ${country.dialCode} ${country.code}`}
+                                onSelect={() => {
+                                  setSelectedCountry(country);
+                                  setCountryOpen(false);
+                                }}
+                                className="cursor-pointer"
+                              >
+                                <span className="text-xl mr-3">{country.flag}</span>
+                                <div className="flex-1">
+                                  <span className="font-medium">{country.name}</span>
+                                </div>
+                                <span className="text-foreground/60 ml-2">{country.dialCode}</span>
+                              </CommandItem>
+                            ))}
+                          </CommandGroup>
+                        </CommandList>
+                      </Command>
+                    </PopoverContent>
+                  </Popover>
+
+                  {/* Phone Number Input */}
                   <div className="relative flex-1">
-                    <Smartphone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary/70" />
                     <Input
                       id="phone"
                       type="tel"
                       placeholder="555 123 4567"
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value.replace(/[^\d\s]/g, ''))}
-                      className="pl-10 glass-card border-border/50 focus:border-primary/50"
+                      className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0 bg-transparent pl-3"
                     />
                   </div>
                 </div>
