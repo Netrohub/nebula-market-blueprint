@@ -40,28 +40,10 @@ const gamePlatforms = [
     color: "from-gray-600 to-gray-800"
   },
   { 
-    name: "Nintendo", 
-    icon: "🔴",
-    count: 523,
-    color: "from-red-500 to-red-700"
-  },
-  { 
-    name: "Origin", 
-    icon: "🌐",
-    count: 412,
-    color: "from-orange-500 to-orange-700"
-  },
-  { 
-    name: "Battle.net", 
-    icon: "⚔️",
-    count: 389,
-    color: "from-blue-400 to-cyan-500"
-  },
-  { 
-    name: "Ubisoft", 
-    icon: "🛡️",
-    count: 298,
-    color: "from-purple-500 to-purple-700"
+    name: "Phone", 
+    icon: "📱",
+    count: 982,
+    color: "from-purple-500 to-pink-600"
   },
 ];
 
@@ -207,7 +189,7 @@ const Games = () => {
               <p className="text-foreground/60 text-lg">Choose your gaming platform</p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
               {gamePlatforms.map((platform) => (
                 <Card
                   key={platform.name}
