@@ -202,23 +202,6 @@ const Profile = () => {
           </div>
         </Card>
 
-        {/* Danger Zone */}
-        <Card className="glass-card p-6 border border-red-500/30">
-          <h2 className="text-xl font-bold text-red-500 mb-6">Danger Zone</h2>
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="font-semibold text-foreground mb-1">Delete Account</p>
-                <p className="text-sm text-foreground/60">
-                  Permanently delete your account and all data
-                </p>
-              </div>
-              <Button variant="destructive" size="sm">
-                Delete Account
-              </Button>
-            </div>
-          </div>
-        </Card>
       </div>
     </AccountLayout>
   );

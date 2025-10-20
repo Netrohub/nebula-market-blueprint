@@ -2,6 +2,7 @@ import AccountLayout from "@/components/AccountLayout";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
 import { 
   TrendingUp, 
   ShoppingBag, 
@@ -107,21 +108,29 @@ const Dashboard = () => {
         <Card className="glass-card p-6">
           <h2 className="text-xl font-bold text-foreground mb-4">Quick Actions</h2>
           <div className="grid md:grid-cols-4 gap-3">
-            <Button className="btn-glow justify-start">
-              <ShoppingBag className="h-4 w-4 mr-2" />
-              Browse Products
+            <Button asChild className="btn-glow justify-start">
+              <Link to="/products">
+                <ShoppingBag className="h-4 w-4 mr-2" />
+                Browse Products
+              </Link>
             </Button>
-            <Button variant="outline" className="glass-card border-border/50 justify-start">
-              <Package className="h-4 w-4 mr-2" />
-              List Product
+            <Button asChild variant="outline" className="glass-card border-border/50 justify-start">
+              <Link to="/seller/products">
+                <Package className="h-4 w-4 mr-2" />
+                List Product
+              </Link>
             </Button>
-            <Button variant="outline" className="glass-card border-border/50 justify-start">
-              <DollarSign className="h-4 w-4 mr-2" />
-              Add Funds
+            <Button asChild variant="outline" className="glass-card border-border/50 justify-start">
+              <Link to="/account/wallet">
+                <DollarSign className="h-4 w-4 mr-2" />
+                Add Funds
+              </Link>
             </Button>
-            <Button variant="outline" className="glass-card border-border/50 justify-start">
-              <TrendingUp className="h-4 w-4 mr-2" />
-              View Analytics
+            <Button asChild variant="outline" className="glass-card border-border/50 justify-start">
+              <Link to="/seller/dashboard">
+                <TrendingUp className="h-4 w-4 mr-2" />
+                View Analytics
+              </Link>
             </Button>
           </div>
         </Card>
@@ -130,9 +139,11 @@ const Dashboard = () => {
         <Card className="glass-card p-6">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold text-foreground">Recent Orders</h2>
-            <Button variant="ghost" size="sm" className="text-primary hover:text-primary/80">
-              View All
-              <ArrowRight className="h-4 w-4 ml-2" />
+            <Button asChild variant="ghost" size="sm" className="text-primary hover:text-primary/80">
+              <Link to="/account/orders">
+                View All
+                <ArrowRight className="h-4 w-4 ml-2" />
+              </Link>
             </Button>
           </div>
 
@@ -183,9 +194,11 @@ const Dashboard = () => {
               <p className="text-foreground/60 mb-4">
                 Get access to premium features, lower fees, and priority support.
               </p>
-              <Button className="btn-glow">
-                Upgrade Now
-                <ArrowRight className="h-4 w-4 ml-2" />
+              <Button asChild className="btn-glow">
+                <Link to="/pricing">
+                  Upgrade Now
+                  <ArrowRight className="h-4 w-4 ml-2" />
+                </Link>
               </Button>
             </div>
           </div>

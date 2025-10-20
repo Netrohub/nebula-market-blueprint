@@ -2,6 +2,8 @@ import AccountLayout from "@/components/AccountLayout";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 import { 
   CreditCard, 
   Plus,
@@ -51,6 +53,44 @@ const billingHistory = [
 ];
 
 const Billing = () => {
+  const { toast } = useToast();
+
+  const handleCancelSubscription = () => {
+    toast({
+      title: "Cancel Subscription",
+      description: "Please contact support to cancel your subscription.",
+      variant: "destructive",
+    });
+  };
+
+  const handleAddCard = () => {
+    toast({
+      title: "Add Payment Method",
+      description: "Payment method form will open here.",
+    });
+  };
+
+  const handleSetDefault = (methodId: number) => {
+    toast({
+      title: "Default Payment Method",
+      description: "Payment method set as default successfully.",
+    });
+  };
+
+  const handleDeleteCard = (methodId: number) => {
+    toast({
+      title: "Delete Payment Method",
+      description: "Payment method deleted successfully.",
+    });
+  };
+
+  const handleDownloadInvoice = (invoiceId: string) => {
+    toast({
+      title: "Download Invoice",
+      description: `Downloading invoice ${invoiceId}...`,
+    });
+  };
+
   return (
     <AccountLayout>
       <div className="space-y-6">
@@ -90,10 +130,16 @@ const Billing = () => {
           </div>
 
           <div className="flex gap-3">
-            <Button variant="outline" className="glass-card border-border/50">
-              Change Plan
+            <Button asChild variant="outline" className="glass-card border-border/50">
+              <Link to="/pricing">
+                Change Plan
+              </Link>
             </Button>
-            <Button variant="ghost" className="text-destructive hover:text-destructive">
+            <Button 
+              variant="ghost" 
+              className="text-destructive hover:text-destructive"
+              onClick={handleCancelSubscription}
+            >
               Cancel Subscription
             </Button>
           </div>
@@ -103,7 +149,7 @@ const Billing = () => {
         <Card className="glass-card p-6">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold text-foreground">Payment Methods</h2>
-            <Button size="sm" className="btn-glow">
+            <Button size="sm" className="btn-glow" onClick={handleAddCard}>
               <Plus className="h-4 w-4 mr-2" />
               Add Card
             </Button>
@@ -135,7 +181,12 @@ const Billing = () => {
                 </div>
                 <div className="flex gap-2">
                   {!method.isDefault && (
-                    <Button size="sm" variant="outline" className="glass-card border-border/50">
+                    <Button 
+                      size="sm" 
+                      variant="outline" 
+                      className="glass-card border-border/50"
+                      onClick={() => handleSetDefault(method.id)}
+                    >
                       Set as Default
                     </Button>
                   )}
@@ -143,6 +194,7 @@ const Billing = () => {
                     size="sm"
                     variant="ghost"
                     className="text-destructive hover:text-destructive"
+                    onClick={() => handleDeleteCard(method.id)}
                   >
                     <Trash2 className="h-4 w-4" />
                   </Button>
@@ -156,8 +208,10 @@ const Billing = () => {
         <Card className="glass-card p-6">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold text-foreground">Billing History</h2>
-            <Button variant="ghost" size="sm" className="text-primary hover:text-primary/80">
-              View All
+            <Button asChild variant="ghost" size="sm" className="text-primary hover:text-primary/80">
+              <Link to="/account/billing">
+                View All
+              </Link>
             </Button>
           </div>
 
@@ -180,7 +234,12 @@ const Billing = () => {
                   <p className="text-lg font-bold text-foreground">
                     ${invoice.amount.toFixed(2)}
                   </p>
-                  <Button size="sm" variant="outline" className="glass-card border-border/50">
+                  <Button 
+                    size="sm" 
+                    variant="outline" 
+                    className="glass-card border-border/50"
+                    onClick={() => handleDownloadInvoice(invoice.id)}
+                  >
                     Download
                   </Button>
                 </div>
