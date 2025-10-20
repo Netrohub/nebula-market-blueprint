@@ -12,11 +12,13 @@ const categories = [
 
 const CategoryGrid = () => {
   return (
-    <section className="py-16">
+    <section className="py-16 relative">
       <div className="container mx-auto px-4">
-        <div className="mb-10 text-center">
-          <h2 className="mb-3 text-3xl font-bold">Browse by Category</h2>
-          <p className="text-muted-foreground">Explore products across popular categories</p>
+        <div className="mb-12 text-center space-y-3">
+          <h2 className="text-4xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            Browse by Category
+          </h2>
+          <p className="text-foreground/60 text-lg">Explore products across gaming platforms and social media</p>
         </div>
         
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
@@ -25,15 +27,15 @@ const CategoryGrid = () => {
             return (
               <Card
                 key={category.name}
-                className="card-hover cursor-pointer p-6 text-center"
+                className="glass-card cursor-pointer p-6 text-center group hover:scale-105 transition-all duration-300"
               >
-                <div className="mb-3 flex justify-center">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <Icon className="h-6 w-6 text-primary" />
+                <div className="mb-4 flex justify-center">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/30 group-hover:border-primary/50 group-hover:scale-110 transition-all duration-300">
+                    <Icon className="h-7 w-7 text-primary group-hover:text-accent transition-colors" />
                   </div>
                 </div>
-                <h3 className="mb-1 font-semibold">{category.name}</h3>
-                <p className="text-sm text-muted-foreground">{category.count} items</p>
+                <h3 className="mb-2 font-bold text-foreground group-hover:text-primary transition-colors">{category.name}</h3>
+                <p className="text-sm text-muted-foreground font-medium">{category.count} items</p>
               </Card>
             );
           })}

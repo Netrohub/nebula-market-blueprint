@@ -1,118 +1,158 @@
 import { Link } from "react-router-dom";
-import { Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+import { Facebook, Twitter, Instagram, Mail, Shield, Zap, Award } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="border-t bg-card">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <div className="mb-4 flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                <span className="text-lg font-bold text-primary-foreground">M</span>
+    <footer className="border-t border-border/50 glass-card mt-auto relative overflow-hidden">
+      {/* Background glow */}
+      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[120px]" />
+      
+      <div className="container mx-auto px-4 py-12 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          {/* Brand */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg gradient-primary shadow-lg">
+                <span className="text-xl font-bold text-primary-foreground">N</span>
               </div>
-              <span className="text-xl font-bold">Marketplace</span>
+              <span className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                NXOLand
+              </span>
             </div>
-            <p className="mb-4 text-sm text-muted-foreground">
-              Your trusted digital marketplace for quality products at great prices.
+            <p className="text-sm text-foreground/60 leading-relaxed">
+              The premier digital gaming marketplace. Buy and sell with confidence.
             </p>
             <div className="flex gap-3">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="#" className="p-2 rounded-lg glass-card hover:bg-primary/10 text-muted-foreground hover:text-primary transition-all">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="#" className="p-2 rounded-lg glass-card hover:bg-primary/10 text-muted-foreground hover:text-primary transition-all">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="#" className="p-2 rounded-lg glass-card hover:bg-primary/10 text-muted-foreground hover:text-primary transition-all">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Youtube className="h-5 w-5" />
+              <a href="#" className="p-2 rounded-lg glass-card hover:bg-primary/10 text-muted-foreground hover:text-primary transition-all">
+                <Mail className="h-5 w-5" />
               </a>
             </div>
           </div>
 
+          {/* Marketplace */}
           <div>
-            <h3 className="mb-4 font-semibold">Shop</h3>
-            <ul className="space-y-2 text-sm">
+            <h3 className="font-bold mb-4 text-foreground">Marketplace</h3>
+            <ul className="space-y-3">
               <li>
-                <Link to="/products" className="text-muted-foreground hover:text-foreground transition-colors">
-                  All Products
+                <Link to="/products" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                  Products
                 </Link>
               </li>
               <li>
-                <Link to="/categories" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Categories
+                <Link to="/games" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                  Games
                 </Link>
               </li>
               <li>
-                <Link to="/deals" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Special Deals
+                <Link to="/leaderboard" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                  Leaderboard
                 </Link>
               </li>
               <li>
-                <Link to="/new" className="text-muted-foreground hover:text-foreground transition-colors">
-                  New Arrivals
+                <Link to="/pricing" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                  Pricing
                 </Link>
               </li>
             </ul>
           </div>
 
+          {/* Account */}
           <div>
-            <h3 className="mb-4 font-semibold">Support</h3>
-            <ul className="space-y-2 text-sm">
+            <h3 className="font-bold mb-4 text-foreground">Account</h3>
+            <ul className="space-y-3">
               <li>
-                <Link to="/help" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Help Center
+                <Link to="/account" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                  Dashboard
                 </Link>
               </li>
               <li>
-                <Link to="/shipping" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Shipping Info
+                <Link to="/seller/dashboard" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                  Sell on NXOLand
                 </Link>
               </li>
               <li>
-                <Link to="/returns" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Returns
+                <Link to="/account/orders" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                  Orders
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Contact Us
+                <Link to="/account/wallet" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                  Wallet
                 </Link>
               </li>
             </ul>
           </div>
 
+          {/* Legal */}
           <div>
-            <h3 className="mb-4 font-semibold">Company</h3>
-            <ul className="space-y-2 text-sm">
+            <h3 className="font-bold mb-4 text-foreground">Legal & Support</h3>
+            <ul className="space-y-3">
               <li>
-                <Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors">
-                  About Us
+                <Link to="/terms" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                  Terms of Service
                 </Link>
               </li>
               <li>
-                <Link to="/careers" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Careers
-                </Link>
-              </li>
-              <li>
-                <Link to="/privacy" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link to="/privacy" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="/terms" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Terms of Service
+                <Link to="/refund-policy" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                  Refund Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/disputes" className="text-sm text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                  Dispute Center
                 </Link>
               </li>
             </ul>
           </div>
         </div>
-
-        <div className="mt-12 border-t pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Marketplace. All rights reserved.</p>
+        
+        {/* Trust badges */}
+        <div className="flex flex-wrap justify-center gap-8 py-8 border-t border-border/30">
+          <div className="flex items-center gap-2 text-sm text-foreground/60">
+            <Shield className="h-5 w-5 text-primary" />
+            <span>Secure Payments</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-foreground/60">
+            <Zap className="h-5 w-5 text-accent" />
+            <span>Instant Delivery</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-foreground/60">
+            <Award className="h-5 w-5 text-primary" />
+            <span>Verified Sellers</span>
+          </div>
+        </div>
+        
+        <div className="border-t border-border/30 pt-8 text-center">
+          <p className="text-sm text-foreground/50">
+            © 2024 NXOLand Marketplace. All rights reserved. Built with 💜 for gamers.
+          </p>
         </div>
       </div>
     </footer>

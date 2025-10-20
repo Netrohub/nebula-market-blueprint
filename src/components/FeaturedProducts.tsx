@@ -65,11 +65,16 @@ const products = [
 
 const FeaturedProducts = () => {
   return (
-    <section className="py-16 bg-muted/30">
-      <div className="container mx-auto px-4">
-        <div className="mb-10 text-center">
-          <h2 className="mb-3 text-3xl font-bold">Featured Products</h2>
-          <p className="text-muted-foreground">Handpicked products just for you</p>
+    <section className="py-16 relative">
+      {/* Background glow effect */}
+      <div className="absolute inset-0 bg-gradient-cosmic opacity-30" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="mb-12 text-center space-y-3">
+          <h2 className="text-4xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            Featured Products
+          </h2>
+          <p className="text-foreground/60 text-lg">Handpicked premium accounts and digital products</p>
         </div>
         
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
