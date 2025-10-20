@@ -13,10 +13,13 @@ import Register from "./pages/Register";
 import About from "./pages/About";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import Terms from "./pages/Terms";
+import Privacy from "./pages/Privacy";
 import Dashboard from "./pages/account/Dashboard";
 import Profile from "./pages/account/Profile";
 import Wallet from "./pages/account/Wallet";
 import Orders from "./pages/account/Orders";
+import Notifications from "./pages/account/Notifications";
 import SellerDashboard from "./pages/seller/Dashboard";
 import SellerProducts from "./pages/seller/Products";
 import NotFound from "./pages/NotFound";
@@ -40,10 +43,13 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
           <Route path="/account" element={<Dashboard />} />
           <Route path="/account/profile" element={<Profile />} />
           <Route path="/account/wallet" element={<Wallet />} />
           <Route path="/account/orders" element={<Orders />} />
+          <Route path="/account/notifications" element={<Notifications />} />
           <Route path="/seller/dashboard" element={<SellerDashboard />} />
           <Route path="/seller/products" element={<SellerProducts />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
