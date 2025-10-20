@@ -7,12 +7,17 @@ import Index from "./pages/Index";
 import Leaderboard from "./pages/Leaderboard";
 import Games from "./pages/Games";
 import Products from "./pages/Products";
+import ProductDetail from "./pages/ProductDetail";
 import Pricing from "./pages/Pricing";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import About from "./pages/About";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import Wishlist from "./pages/Wishlist";
+import Compare from "./pages/Compare";
+import HelpCenter from "./pages/HelpCenter";
+import SellerProfile from "./pages/SellerProfile";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import Dashboard from "./pages/account/Dashboard";
@@ -40,7 +45,12 @@ const App = () => (
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/games" element={<Games />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/compare" element={<Compare />} />
+          <Route path="/help" element={<HelpCenter />} />
+          <Route path="/seller/:seller" element={<SellerProfile />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/about" element={<About />} />
