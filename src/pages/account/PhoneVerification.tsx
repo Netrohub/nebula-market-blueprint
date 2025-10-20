@@ -5,6 +5,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { 
   Smartphone,
   Send,
@@ -14,15 +21,56 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
+const countries = [
+  { code: 'US', name: 'United States', dialCode: '+1', flag: '🇺🇸' },
+  { code: 'GB', name: 'United Kingdom', dialCode: '+44', flag: '🇬🇧' },
+  { code: 'CA', name: 'Canada', dialCode: '+1', flag: '🇨🇦' },
+  { code: 'AU', name: 'Australia', dialCode: '+61', flag: '🇦🇺' },
+  { code: 'DE', name: 'Germany', dialCode: '+49', flag: '🇩🇪' },
+  { code: 'FR', name: 'France', dialCode: '+33', flag: '🇫🇷' },
+  { code: 'IT', name: 'Italy', dialCode: '+39', flag: '🇮🇹' },
+  { code: 'ES', name: 'Spain', dialCode: '+34', flag: '🇪🇸' },
+  { code: 'NL', name: 'Netherlands', dialCode: '+31', flag: '🇳🇱' },
+  { code: 'SE', name: 'Sweden', dialCode: '+46', flag: '🇸🇪' },
+  { code: 'NO', name: 'Norway', dialCode: '+47', flag: '🇳🇴' },
+  { code: 'DK', name: 'Denmark', dialCode: '+45', flag: '🇩🇰' },
+  { code: 'FI', name: 'Finland', dialCode: '+358', flag: '🇫🇮' },
+  { code: 'PL', name: 'Poland', dialCode: '+48', flag: '🇵🇱' },
+  { code: 'CZ', name: 'Czech Republic', dialCode: '+420', flag: '🇨🇿' },
+  { code: 'AT', name: 'Austria', dialCode: '+43', flag: '🇦🇹' },
+  { code: 'CH', name: 'Switzerland', dialCode: '+41', flag: '🇨🇭' },
+  { code: 'BE', name: 'Belgium', dialCode: '+32', flag: '🇧🇪' },
+  { code: 'IE', name: 'Ireland', dialCode: '+353', flag: '🇮🇪' },
+  { code: 'PT', name: 'Portugal', dialCode: '+351', flag: '🇵🇹' },
+  { code: 'GR', name: 'Greece', dialCode: '+30', flag: '🇬🇷' },
+  { code: 'JP', name: 'Japan', dialCode: '+81', flag: '🇯🇵' },
+  { code: 'KR', name: 'South Korea', dialCode: '+82', flag: '🇰🇷' },
+  { code: 'CN', name: 'China', dialCode: '+86', flag: '🇨🇳' },
+  { code: 'IN', name: 'India', dialCode: '+91', flag: '🇮🇳' },
+  { code: 'SG', name: 'Singapore', dialCode: '+65', flag: '🇸🇬' },
+  { code: 'AE', name: 'United Arab Emirates', dialCode: '+971', flag: '🇦🇪' },
+  { code: 'SA', name: 'Saudi Arabia', dialCode: '+966', flag: '🇸🇦' },
+  { code: 'ZA', name: 'South Africa', dialCode: '+27', flag: '🇿🇦' },
+  { code: 'BR', name: 'Brazil', dialCode: '+55', flag: '🇧🇷' },
+  { code: 'MX', name: 'Mexico', dialCode: '+52', flag: '🇲🇽' },
+  { code: 'AR', name: 'Argentina', dialCode: '+54', flag: '🇦🇷' },
+  { code: 'CL', name: 'Chile', dialCode: '+56', flag: '🇨🇱' },
+  { code: 'CO', name: 'Colombia', dialCode: '+57', flag: '🇨🇴' },
+  { code: 'NZ', name: 'New Zealand', dialCode: '+64', flag: '🇳🇿' },
+];
+
 const PhoneVerification = () => {
   const { toast } = useToast();
   const [step, setStep] = useState<'input' | 'verify' | 'success'>('input');
+  const [selectedCountry, setSelectedCountry] = useState(countries[0]); // Default to US
   const [phoneNumber, setPhoneNumber] = useState('');
   const [otp, setOtp] = useState(['', '', '', '', '', '']);
   const [isLoading, setIsLoading] = useState(false);
 
+  const fullPhoneNumber = `${selectedCountry.dialCode} ${phoneNumber}`;
+
   const handleSendOTP = async () => {
-    if (!phoneNumber || phoneNumber.length < 10) {
+    if (!phoneNumber || phoneNumber.length < 7) {
       toast({
         title: "Invalid Phone Number",
         description: "Please enter a valid phone number",
@@ -41,7 +89,7 @@ const PhoneVerification = () => {
     
     toast({
       title: "OTP Sent!",
-      description: `A 6-digit code has been sent to ${phoneNumber}`,
+      description: `A 6-digit code has been sent to ${fullPhoneNumber}`,
     });
   };
 
@@ -133,19 +181,59 @@ const PhoneVerification = () => {
 
             <div className="space-y-4">
               <div className="space-y-2">
+                <Label htmlFor="country" className="text-foreground">
+                  Country
+                </Label>
+                <Select 
+                  value={selectedCountry.code}
+                  onValueChange={(code) => {
+                    const country = countries.find(c => c.code === code);
+                    if (country) setSelectedCountry(country);
+                  }}
+                >
+                  <SelectTrigger className="glass-card border-border/50 focus:border-primary/50">
+                    <SelectValue>
+                      <div className="flex items-center gap-2">
+                        <span className="text-2xl">{selectedCountry.flag}</span>
+                        <span className="font-medium">{selectedCountry.name}</span>
+                        <span className="text-foreground/60">({selectedCountry.dialCode})</span>
+                      </div>
+                    </SelectValue>
+                  </SelectTrigger>
+                  <SelectContent className="glass-card border-border/50 max-h-[300px]">
+                    {countries.map((country) => (
+                      <SelectItem key={country.code} value={country.code}>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xl">{country.flag}</span>
+                          <span>{country.name}</span>
+                          <span className="text-foreground/60">{country.dialCode}</span>
+                        </div>
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="space-y-2">
                 <Label htmlFor="phone" className="text-foreground">
                   Phone Number
                 </Label>
-                <div className="relative">
-                  <Smartphone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary/70" />
-                  <Input
-                    id="phone"
-                    type="tel"
-                    placeholder="+1 (555) 123-4567"
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                    className="pl-10 glass-card border-border/50 focus:border-primary/50"
-                  />
+                <div className="flex gap-2">
+                  <div className="flex items-center gap-2 px-3 rounded-lg glass-card border border-border/50 bg-muted/30">
+                    <span className="text-xl">{selectedCountry.flag}</span>
+                    <span className="font-medium text-foreground">{selectedCountry.dialCode}</span>
+                  </div>
+                  <div className="relative flex-1">
+                    <Smartphone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary/70" />
+                    <Input
+                      id="phone"
+                      type="tel"
+                      placeholder="555 123 4567"
+                      value={phoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value.replace(/[^\d\s]/g, ''))}
+                      className="pl-10 glass-card border-border/50 focus:border-primary/50"
+                    />
+                  </div>
                 </div>
                 <p className="text-xs text-foreground/50">
                   Standard messaging rates may apply
@@ -173,7 +261,7 @@ const PhoneVerification = () => {
               <div>
                 <h2 className="text-xl font-bold text-foreground mb-2">Enter Verification Code</h2>
                 <p className="text-sm text-foreground/60">
-                  We sent a 6-digit code to {phoneNumber}
+                  We sent a 6-digit code to {fullPhoneNumber}
                 </p>
               </div>
             </div>
@@ -239,7 +327,10 @@ const PhoneVerification = () => {
               
               <h2 className="text-2xl font-bold text-foreground mb-2">Phone Verified Successfully!</h2>
               <p className="text-foreground/60 mb-8">
-                Your phone number {phoneNumber} has been verified
+                <span className="inline-flex items-center gap-2">
+                  <span className="text-xl">{selectedCountry.flag}</span>
+                  <span>Your phone number {fullPhoneNumber} has been verified</span>
+                </span>
               </p>
 
               <div className="space-y-3">
