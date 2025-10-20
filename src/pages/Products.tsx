@@ -1,3 +1,4 @@
+import { useState, useMemo } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Starfield from "@/components/Starfield";
@@ -132,6 +133,88 @@ const priceRanges = [
 ];
 
 const Products = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all-products");
+  const [selectedPriceRange, setSelectedPriceRange] = useState("all-prices");
+  const [sortBy, setSortBy] = useState("featured");
+
+  const filteredAndSortedProducts = useMemo(() => {
+    let filtered = [...products];
+
+    // Search filter
+    if (searchQuery) {
+      filtered = filtered.filter(product =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.category.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
+    // Category filter
+    if (selectedCategory !== "all-products") {
+      const categoryName = categories.find(cat => 
+        cat.toLowerCase().replace(" ", "-") === selectedCategory
+      );
+      if (categoryName) {
+        filtered = filtered.filter(product => product.category === categoryName);
+      }
+    }
+
+    // Price filter
+    if (selectedPriceRange !== "all-prices") {
+      filtered = filtered.filter(product => {
+        switch (selectedPriceRange) {
+          case "under-$100":
+            return product.price < 100;
+          case "$100---$300":
+            return product.price >= 100 && product.price <= 300;
+          case "$300---$500":
+            return product.price >= 300 && product.price <= 500;
+          case "over-$500":
+            return product.price > 500;
+          default:
+            return true;
+        }
+      });
+    }
+
+    // Sort
+    switch (sortBy) {
+      case "price-low":
+        filtered.sort((a, b) => a.price - b.price);
+        break;
+      case "price-high":
+        filtered.sort((a, b) => b.price - a.price);
+        break;
+      case "rating":
+        filtered.sort((a, b) => b.rating - a.rating);
+        break;
+      case "featured":
+        filtered.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+        break;
+    }
+
+    return filtered;
+  }, [searchQuery, selectedCategory, selectedPriceRange, sortBy]);
+
+  const clearFilter = (filterType: string) => {
+    if (filterType === "category") setSelectedCategory("all-products");
+    if (filterType === "price") setSelectedPriceRange("all-prices");
+  };
+
+  const activeFilters = [];
+  if (selectedCategory !== "all-products") {
+    const categoryName = categories.find(cat => 
+      cat.toLowerCase().replace(" ", "-") === selectedCategory
+    );
+    if (categoryName) activeFilters.push({ type: "category", label: categoryName });
+  }
+  if (selectedPriceRange !== "all-prices") {
+    const priceName = priceRanges.find(range => 
+      range.toLowerCase().replace(" ", "-") === selectedPriceRange
+    );
+    if (priceName) activeFilters.push({ type: "price", label: priceName });
+  }
+
   return (
     <div className="min-h-screen flex flex-col relative">
       <Starfield />
@@ -158,6 +241,8 @@ const Products = () => {
                   type="search"
                   placeholder="Search for products, accounts, or services..."
                   className="w-full pl-12 pr-4 h-12 glass-card border-primary/30 focus:border-primary/50"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
             </div>
@@ -176,7 +261,7 @@ const Products = () => {
                     Filters
                   </Button>
                   
-                  <Select defaultValue="all">
+                  <Select value={selectedCategory} onValueChange={setSelectedCategory}>
                     <SelectTrigger className="w-[180px] glass-card border-primary/30">
                       <SelectValue placeholder="Category" />
                     </SelectTrigger>
@@ -189,7 +274,7 @@ const Products = () => {
                     </SelectContent>
                   </Select>
 
-                  <Select defaultValue="all-prices">
+                  <Select value={selectedPriceRange} onValueChange={setSelectedPriceRange}>
                     <SelectTrigger className="w-[180px] glass-card border-primary/30">
                       <SelectValue placeholder="Price Range" />
                     </SelectTrigger>
@@ -204,7 +289,7 @@ const Products = () => {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <Select defaultValue="featured">
+                  <Select value={sortBy} onValueChange={setSortBy}>
                     <SelectTrigger className="w-[180px] glass-card border-primary/30">
                       <SelectValue placeholder="Sort by" />
                     </SelectTrigger>
@@ -229,32 +314,42 @@ const Products = () => {
               </div>
 
               {/* Active Filters */}
-              <div className="flex flex-wrap gap-2 mt-4">
-                <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
-                  Social Media
-                  <button className="ml-2 hover:text-primary/70">×</button>
-                </Badge>
-                <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
-                  $300 - $500
-                  <button className="ml-2 hover:text-primary/70">×</button>
-                </Badge>
-              </div>
+              {activeFilters.length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {activeFilters.map((filter) => (
+                    <Badge key={filter.type} variant="secondary" className="bg-primary/10 text-primary border-primary/20">
+                      {filter.label}
+                      <button 
+                        className="ml-2 hover:text-primary/70"
+                        onClick={() => clearFilter(filter.type)}
+                      >
+                        ×
+                      </button>
+                    </Badge>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Results Count */}
             <div className="mb-6 flex items-center justify-between">
               <p className="text-foreground/60">
-                Showing <span className="text-foreground font-semibold">{products.length}</span> of{" "}
-                <span className="text-foreground font-semibold">1,247</span> products
+                Showing <span className="text-foreground font-semibold">{filteredAndSortedProducts.length}</span> products
               </p>
             </div>
 
             {/* Products Grid */}
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {products.map((product) => (
-                <ProductCard key={product.id} {...product} />
-              ))}
-            </div>
+            {filteredAndSortedProducts.length > 0 ? (
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {filteredAndSortedProducts.map((product) => (
+                  <ProductCard key={product.id} {...product} />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-12">
+                <p className="text-foreground/60 text-lg">No products found matching your filters.</p>
+              </div>
+            )}
 
             {/* Load More */}
             <div className="mt-12 text-center">

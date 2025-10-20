@@ -1,3 +1,4 @@
+import { useState, useMemo } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Starfield from "@/components/Starfield";
@@ -111,6 +112,28 @@ const featuredAccounts = [
 ];
 
 const Games = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
+
+  const filteredAccounts = useMemo(() => {
+    let filtered = [...featuredAccounts];
+
+    // Search filter
+    if (searchQuery) {
+      filtered = filtered.filter(account =>
+        account.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        account.category.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
+    // Platform filter
+    if (selectedPlatform) {
+      filtered = filtered.filter(account => account.category === selectedPlatform);
+    }
+
+    return filtered;
+  }, [searchQuery, selectedPlatform]);
+
   return (
     <div className="min-h-screen flex flex-col relative">
       <Starfield />
@@ -146,6 +169,8 @@ const Games = () => {
                     type="search"
                     placeholder="Search for game accounts, platforms, or titles..."
                     className="w-full pl-12 pr-4 h-14 glass-card border-primary/30 focus:border-primary/50 text-base"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                   />
                   <Button size="sm" className="absolute right-2 top-1/2 -translate-y-1/2 btn-glow">
                     <Filter className="h-4 w-4 mr-2" />
@@ -193,7 +218,10 @@ const Games = () => {
               {gamePlatforms.map((platform) => (
                 <Card
                   key={platform.name}
-                  className="glass-card cursor-pointer p-6 text-center group hover:scale-105 transition-all duration-300"
+                  className={`glass-card cursor-pointer p-6 text-center group hover:scale-105 transition-all duration-300 ${
+                    selectedPlatform === platform.name ? 'border-primary/50 bg-primary/5' : ''
+                  }`}
+                  onClick={() => setSelectedPlatform(selectedPlatform === platform.name ? null : platform.name)}
                 >
                   <div className="mb-4 flex justify-center">
                     <div className={`flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br ${platform.color} group-hover:scale-110 transition-all duration-300 shadow-lg text-3xl`}>
@@ -233,11 +261,31 @@ const Games = () => {
               </Button>
             </div>
 
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {featuredAccounts.map((account) => (
-                <ProductCard key={account.id} {...account} />
-              ))}
-            </div>
+            {selectedPlatform && (
+              <div className="mb-6">
+                <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
+                  {selectedPlatform}
+                  <button 
+                    className="ml-2 hover:text-primary/70"
+                    onClick={() => setSelectedPlatform(null)}
+                  >
+                    ×
+                  </button>
+                </Badge>
+              </div>
+            )}
+
+            {filteredAccounts.length > 0 ? (
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {filteredAccounts.map((account) => (
+                  <ProductCard key={account.id} {...account} />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-12">
+                <p className="text-foreground/60 text-lg">No accounts found matching your search.</p>
+              </div>
+            )}
           </div>
         </section>
 
