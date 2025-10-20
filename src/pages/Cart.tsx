@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, Tag } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const cartItems = [
   {
@@ -30,6 +31,7 @@ const cartItems = [
 ];
 
 const Cart = () => {
+  const { t } = useLanguage();
   const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const serviceFee = subtotal * 0.03; // 3% service fee
   const total = subtotal + serviceFee;
@@ -43,9 +45,9 @@ const Cart = () => {
         <div className="container mx-auto px-4">
           <div className="mb-8">
             <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-2">
-              Shopping Cart
+              {t('shoppingCart')}
             </h1>
-            <p className="text-foreground/60">{cartItems.length} items in your cart</p>
+            <p className="text-foreground/60">{cartItems.length} {t('itemsInCart')}</p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
@@ -122,12 +124,12 @@ const Cart = () => {
                   <div className="relative flex-1">
                     <Tag className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary/70" />
                     <Input
-                      placeholder="Enter coupon code"
+                      placeholder={t('enterCouponCode')}
                       className="pl-10 glass-card border-border/50"
                     />
                   </div>
                   <Button variant="outline" className="glass-card border-primary/30 hover:border-primary/50">
-                    Apply
+                    {t('apply')}
                   </Button>
                 </div>
               </Card>
@@ -136,20 +138,20 @@ const Cart = () => {
             {/* Order Summary */}
             <div className="lg:col-span-1">
               <Card className="glass-card p-6 sticky top-4">
-                <h2 className="text-xl font-bold text-foreground mb-6">Order Summary</h2>
+                <h2 className="text-xl font-bold text-foreground mb-6">{t('orderSummary')}</h2>
                 
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between text-foreground/70">
-                    <span>Subtotal</span>
+                    <span>{t('subtotal')}</span>
                     <span className="font-semibold">${subtotal.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-foreground/70">
-                    <span>Service Fee (3%)</span>
+                    <span>{t('serviceFee')} (3%)</span>
                     <span className="font-semibold">${serviceFee.toFixed(2)}</span>
                   </div>
                   <div className="border-t border-border/30 pt-4">
                     <div className="flex justify-between items-center">
-                      <span className="text-lg font-bold text-foreground">Total</span>
+                      <span className="text-lg font-bold text-foreground">{t('total')}</span>
                       <span className="text-2xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                         ${total.toFixed(2)}
                       </span>
@@ -159,7 +161,7 @@ const Cart = () => {
 
                 <Link to="/checkout">
                   <Button className="w-full btn-glow mb-3" size="lg">
-                    Proceed to Checkout
+                    {t('proceedToCheckout')}
                     <ArrowRight className="h-4 w-4 ml-2" />
                   </Button>
                 </Link>
@@ -167,7 +169,7 @@ const Cart = () => {
                 <Link to="/products">
                   <Button variant="outline" className="w-full glass-card border-border/50" size="lg">
                     <ShoppingBag className="h-4 w-4 mr-2" />
-                    Continue Shopping
+                    {t('continueShopping')}
                   </Button>
                 </Link>
 
@@ -175,15 +177,15 @@ const Cart = () => {
                 <div className="mt-6 pt-6 border-t border-border/30 space-y-3 text-sm text-foreground/60">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-primary" />
-                    <span>Secure checkout</span>
+                    <span>{t('secureCheckout')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-primary" />
-                    <span>Instant delivery</span>
+                    <span>{t('instantDelivery')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-primary" />
-                    <span>Money-back guarantee</span>
+                    <span>{t('moneyBackGuarantee')}</span>
                   </div>
                 </div>
               </Card>

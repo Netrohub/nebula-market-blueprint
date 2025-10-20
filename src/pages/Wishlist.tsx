@@ -5,6 +5,7 @@ import ProductCard from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Heart, ShoppingCart, Trash2 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const wishlistItems = [
   {
@@ -43,6 +44,8 @@ const wishlistItems = [
 ];
 
 const Wishlist = () => {
+  const { t } = useLanguage();
+  
   return (
     <div className="min-h-screen flex flex-col relative">
       <Starfield />
@@ -59,19 +62,19 @@ const Wishlist = () => {
                 <Heart className="h-8 w-8 text-primary" />
               </div>
               <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4">
-                My Wishlist
+                {t('myWishlist')}
               </h1>
               <p className="text-foreground/60 mb-6">
-                {wishlistItems.length} items saved for later
+                {wishlistItems.length} {t('itemsSavedForLater')}
               </p>
               <div className="flex justify-center gap-3">
                 <Button size="lg" className="btn-glow">
                   <ShoppingCart className="h-5 w-5 mr-2" />
-                  Add All to Cart
+                  {t('addAllToCart')}
                 </Button>
                 <Button size="lg" variant="outline" className="glass-card border-primary/30">
                   <Trash2 className="h-5 w-5 mr-2" />
-                  Clear Wishlist
+                  {t('clearWishlist')}
                 </Button>
               </div>
             </div>
@@ -97,12 +100,12 @@ const Wishlist = () => {
                 <div className="inline-flex p-4 rounded-xl bg-primary/10 border border-primary/20 mb-6">
                   <Heart className="h-12 w-12 text-primary" />
                 </div>
-                <h2 className="text-2xl font-bold text-foreground mb-3">Your wishlist is empty</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-3">{t('yourWishlistIsEmpty')}</h2>
                 <p className="text-foreground/60 mb-6">
-                  Start adding products you love to keep track of them!
+                  {t('startAddingProducts')}
                 </p>
                 <Button size="lg" className="btn-glow">
-                  Browse Products
+                  {t('browseProducts')}
                 </Button>
               </Card>
             )}
