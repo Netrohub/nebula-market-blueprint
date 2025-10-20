@@ -5,6 +5,7 @@ import Starfield from "@/components/Starfield";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { getCategoryImage } from "@/lib/categoryImages";
 import { 
   GitCompare, 
   X, 
@@ -129,7 +130,11 @@ const Compare = () => {
                             <X className="h-4 w-4" />
                           </button>
                           <div className="aspect-square rounded-lg overflow-hidden mb-4">
-                            <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                            <img 
+                              src={getCategoryImage(product.category, product.image)} 
+                              alt={product.category} 
+                              className="w-full h-full object-cover" 
+                            />
                           </div>
                           <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 mb-2">
                             {product.category}

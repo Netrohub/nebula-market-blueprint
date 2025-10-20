@@ -2,6 +2,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ShoppingCart, Star } from "lucide-react";
+import { getCategoryImage } from "@/lib/categoryImages";
 
 interface ProductCardProps {
   id: string;
@@ -15,13 +16,16 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ name, price, image, category, rating, reviews, featured }: ProductCardProps) => {
+  // Use category-based image instead of product-specific image
+  const displayImage = getCategoryImage(category, image);
+  
   return (
     <Card className="glass-card overflow-hidden group">
       <CardContent className="p-0">
         <div className="relative aspect-square overflow-hidden bg-muted/30">
           <img
-            src={image}
-            alt={name}
+            src={displayImage}
+            alt={category}
             className="h-full w-full object-cover transition-all duration-500 group-hover:scale-110"
           />
           {featured && (

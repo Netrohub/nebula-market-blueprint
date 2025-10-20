@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Trophy, TrendingUp, Star, Award, Medal, Crown } from "lucide-react";
+import { getCategoryImage } from "@/lib/categoryImages";
 
 const topSellers = [
   {
@@ -64,6 +65,7 @@ const topProducts = [
     rating: 4.9,
     price: "$299.99",
     image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&q=80",
+    category: "Steam",
   },
   {
     id: 2,
@@ -73,6 +75,7 @@ const topProducts = [
     rating: 4.8,
     price: "$549.99",
     image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&q=80",
+    category: "Instagram",
   },
   {
     id: 3,
@@ -82,6 +85,7 @@ const topProducts = [
     rating: 4.9,
     price: "$399.99",
     image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=400&q=80",
+    category: "PlayStation",
   },
 ];
 
@@ -232,8 +236,8 @@ const Leaderboard = () => {
                         {/* Image */}
                         <div className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border border-border/50">
                           <img 
-                            src={product.image} 
-                            alt={product.name}
+                            src={getCategoryImage(product.category, product.image)} 
+                            alt={product.category}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform"
                           />
                         </div>
