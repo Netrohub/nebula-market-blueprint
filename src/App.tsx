@@ -18,6 +18,7 @@ import Wishlist from "./pages/Wishlist";
 import Compare from "./pages/Compare";
 import HelpCenter from "./pages/HelpCenter";
 import SellerProfile from "./pages/SellerProfile";
+import CategoryLanding from "./pages/CategoryLanding";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import Dashboard from "./pages/account/Dashboard";
@@ -46,6 +47,7 @@ const App = () => (
           <Route path="/games" element={<Games />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<ProductDetail />} />
+          <Route path="/category/:category" element={<CategoryLanding />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/compare" element={<Compare />} />
