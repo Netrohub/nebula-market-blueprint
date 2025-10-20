@@ -78,14 +78,14 @@ const ListSocialAccount = () => {
           <Card className="glass-card p-6">
             <h2 className="text-xl font-bold text-foreground mb-6">Account Information</h2>
             <div className="space-y-5">
-              {/* Title */}
+              {/* Username */}
               <div className="space-y-2">
-                <Label htmlFor="title" className="text-foreground">
-                  Title *
+                <Label htmlFor="username" className="text-foreground">
+                  Username *
                 </Label>
                 <Input
-                  id="title"
-                  placeholder="e.g., Instagram Account - 50K Followers"
+                  id="username"
+                  placeholder="Enter username only"
                   className="glass-card border-border/50 focus:border-primary/50"
                   required
                 />
@@ -110,22 +110,7 @@ const ListSocialAccount = () => {
                 </Select>
               </div>
 
-              {/* Followers Count */}
-              <div className="space-y-2">
-                <Label htmlFor="followers" className="text-foreground">
-                  Followers/Subscribers Count *
-                </Label>
-                <Input
-                  id="followers"
-                  type="number"
-                  placeholder="e.g., 50000"
-                  className="glass-card border-border/50 focus:border-primary/50"
-                  min="0"
-                  required
-                />
-              </div>
-
-              {/* Description */}
+              {/* Account Description */}
               <div className="space-y-2">
                 <Label htmlFor="description" className="text-foreground">
                   Account Description *
@@ -137,86 +122,75 @@ const ListSocialAccount = () => {
                   required
                 />
                 <p className="text-xs text-foreground/50">
-                  Include details about engagement rate, niche, content type, verification status, etc.
+                  If you want to submit additional details in one of the categories (Snapchat - TikTok - Pubg - Facebook), you must add the exact name of the category. Otherwise, please just describe it briefly, as well as clarify whether or not the account has 2FA. It is recommended to mention some of the account's problems if they exist.
                 </p>
               </div>
             </div>
           </Card>
 
-          {/* Delivery Information */}
+          {/* Configuration Setup */}
           <Card className="glass-card p-6">
-            <h2 className="text-xl font-bold text-foreground mb-4">Delivery Information</h2>
+            <h2 className="text-xl font-bold text-foreground mb-6">Configuration Setup</h2>
             <p className="text-sm text-foreground/60 mb-6">
-              We are committed to providing a secure platform for buying and selling accounts. You must complete these steps to complete your account addition.
+              Instructions to wait for buyer to buy and after buyer confirms purchase
             </p>
             <div className="space-y-5">
-              {/* Account Email/Username */}
+              {/* Configuration Instructions */}
               <div className="space-y-2">
-                <Label htmlFor="accountEmail" className="text-foreground">
-                  Account Email/Username *
-                </Label>
-                <Input
-                  id="accountEmail"
-                  type="text"
-                  placeholder="Enter account email or username"
-                  className="glass-card border-border/50 focus:border-primary/50"
-                  required
-                />
-              </div>
-
-              {/* Account Password */}
-              <div className="space-y-2">
-                <Label htmlFor="accountPassword" className="text-foreground">
-                  Account Password *
-                </Label>
-                <Input
-                  id="accountPassword"
-                  type="password"
-                  placeholder="Enter account password"
-                  className="glass-card border-border/50 focus:border-primary/50"
-                  required
-                />
-                <p className="text-xs text-destructive">
-                  Please make sure you enter a strong password. Enter a password that contains at least one number, lowercase, uppercase, and special character.
-                </p>
-              </div>
-
-              {/* Additional Data */}
-              <div className="space-y-2">
-                <Label htmlFor="additionalInfo" className="text-foreground">
-                  Additional Information
-                </Label>
-                <Button 
-                  type="button"
-                  variant="outline" 
-                  className="w-full glass-card border-primary/30 hover:border-primary/50"
-                >
-                  Add Additional Information
-                </Button>
-              </div>
-
-              {/* Buyer Instructions */}
-              <div className="space-y-2">
-                <Label htmlFor="buyerInstructions" className="text-foreground">
-                  Instructions for Buyer
+                <Label htmlFor="configInstructions" className="text-foreground">
+                  Setup Instructions *
                 </Label>
                 <Textarea
-                  id="buyerInstructions"
+                  id="configInstructions"
                   placeholder="Enter instructions (or accounting or banking details)"
-                  className="glass-card border-border/50 focus:border-primary/50 min-h-[100px]"
+                  className="glass-card border-border/50 focus:border-primary/50 min-h-[120px]"
+                  required
                 />
                 <p className="text-xs text-foreground/50">
-                  These instructions will appear to the buyer before purchase and upon purchase completion
+                  Briefly describe the product, whether it contains an email, phone number, or has a double (2FA)
                 </p>
+              </div>
+
+              {/* Phone Number (Optional) */}
+              <div className="space-y-2">
+                <Label htmlFor="phone" className="text-foreground">
+                  Phone Number (If Applicable) - Optional
+                </Label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  placeholder="Enter phone number (e.g., +1234567890)"
+                  className="glass-card border-border/50 focus:border-primary/50"
+                />
+              </div>
+
+              {/* Seller Type */}
+              <div className="space-y-2">
+                <Label htmlFor="sellerType" className="text-foreground">
+                  Seller Type *
+                </Label>
+                <Select required>
+                  <SelectTrigger className="glass-card border-border/50 bg-background">
+                    <SelectValue placeholder="Select seller type" />
+                  </SelectTrigger>
+                  <SelectContent className="glass-card bg-card border-border z-50">
+                    <SelectItem value="individual">Individual</SelectItem>
+                    <SelectItem value="business">Business</SelectItem>
+                    <SelectItem value="verified">Verified Seller</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
             </div>
           </Card>
 
-          {/* Pricing & Images */}
+          {/* Pricing Section */}
           <Card className="glass-card p-6">
-            <h2 className="text-xl font-bold text-foreground mb-6">Pricing & Images</h2>
+            <h2 className="text-xl font-bold text-foreground mb-6">Pricing Information</h2>
+            <p className="text-sm text-destructive mb-6">
+              If you want to create any external communication outside the platform in an attempt to scam, appeal, or scam, this will expose your account to theft
+            </p>
             <div className="space-y-5">
-              {/* Price */}
+              {/* Original Price */}
               <div className="space-y-2">
                 <Label htmlFor="price" className="text-foreground">
                   Price (USD) *
@@ -226,51 +200,99 @@ const ListSocialAccount = () => {
                   <Input
                     id="price"
                     type="number"
-                    placeholder="Enter your expected price"
+                    placeholder="Enter your price"
                     className="pl-8 glass-card border-border/50 focus:border-primary/50"
                     step="0.01"
                     min="0"
                     required
                   />
                 </div>
-                <p className="text-xs text-foreground/50">
-                  Please do not include external links in the description or description field, as this may result in account suspension and possible exposure of your account to theft
-                </p>
               </div>
 
-              {/* Images */}
+              {/* Discount Price (Optional) */}
               <div className="space-y-2">
-                <Label className="text-foreground">Account Screenshots</Label>
-                <div className="space-y-4">
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    {images.map((image, index) => (
-                      <div key={index} className="relative aspect-square rounded-lg overflow-hidden glass-card border border-border/50 group">
-                        <img src={image} alt={`Account ${index + 1}`} className="w-full h-full object-cover" />
-                        <button
-                          type="button"
-                          onClick={() => setImages(images.filter((_, i) => i !== index))}
-                          className="absolute top-2 right-2 p-1 rounded-full bg-destructive/90 text-white opacity-0 group-hover:opacity-100 transition-opacity"
-                        >
-                          <X className="h-4 w-4" />
-                        </button>
-                      </div>
-                    ))}
-                    
-                    {images.length < 6 && (
-                      <button
-                        type="button"
-                        className="aspect-square rounded-lg glass-card border-2 border-dashed border-border/50 hover:border-primary/50 transition-colors flex flex-col items-center justify-center gap-2 text-foreground/60 hover:text-primary"
-                      >
-                        <Upload className="h-8 w-8" />
-                        <span className="text-sm">Upload</span>
-                      </button>
-                    )}
-                  </div>
-                  <p className="text-xs text-foreground/50">
-                    Upload screenshots showing followers, engagement, profile details (max 6 images)
-                  </p>
+                <Label htmlFor="discountPrice" className="text-foreground">
+                  Discount Price (Optional)
+                </Label>
+                <div className="relative">
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-foreground/60">$</span>
+                  <Input
+                    id="discountPrice"
+                    type="number"
+                    placeholder="Enter discount price (optional)"
+                    className="pl-8 glass-card border-border/50 focus:border-primary/50"
+                    step="0.01"
+                    min="0"
+                  />
                 </div>
               </div>
+
+              {/* Discount Description */}
+              <div className="space-y-2">
+                <Label htmlFor="discountDesc" className="text-foreground">
+                  Discount Description (If applicable)
+                </Label>
+                <Textarea
+                  id="discountDesc"
+                  placeholder="Enter the discount code that will be redeemed before the sale price (optional)"
+                  className="glass-card border-border/50 focus:border-primary/50 min-h-[80px]"
+                />
+              </div>
+
+              <p className="text-xs text-foreground/50">
+                Please do not include external links in the description field, as this may result in account suspension and possible exposure of your account to theft
+              </p>
+            </div>
+          </Card>
+
+          {/* Special Offer Section */}
+          <Card className="glass-card p-6">
+            <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
+              <span className="inline-block px-3 py-1 bg-primary/20 text-primary text-sm rounded-full">Special Offer</span>
+            </h2>
+            <div className="space-y-4">
+              <p className="text-sm text-foreground/60">
+                Get 10% free offers on top 100 users who confirm their bids and provide sales continuity
+              </p>
+              <div className="p-4 glass-card border border-primary/30 rounded-lg">
+                <p className="text-xs text-foreground/60">
+                  * You can benefit from a free offer for top 100 bidders (with conditions ( bids + payments from within the platform ) to ensure the verification of the bidder
+                </p>
+              </div>
+            </div>
+          </Card>
+
+          {/* Images Upload */}
+          <Card className="glass-card p-6">
+            <h2 className="text-xl font-bold text-foreground mb-6">Account Screenshots</h2>
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {images.map((image, index) => (
+                  <div key={index} className="relative aspect-square rounded-lg overflow-hidden glass-card border border-border/50 group">
+                    <img src={image} alt={`Account ${index + 1}`} className="w-full h-full object-cover" />
+                    <button
+                      type="button"
+                      onClick={() => setImages(images.filter((_, i) => i !== index))}
+                      className="absolute top-2 right-2 p-1 rounded-full bg-destructive/90 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  </div>
+                ))}
+                
+                {images.length < 6 && (
+                  <button
+                    type="button"
+                    className="aspect-square rounded-lg glass-card border-2 border-dashed border-border/50 hover:border-primary/50 transition-colors flex flex-col items-center justify-center gap-2 text-foreground/60 hover:text-primary"
+                  >
+                    <Upload className="h-8 w-8" />
+                    <span className="text-sm">Upload Image</span>
+                  </button>
+                )}
+              </div>
+              <p className="text-xs text-foreground/50">
+                Upload screenshots showing followers, engagement, profile details (max 6 images)
+              </p>
             </div>
           </Card>
 
