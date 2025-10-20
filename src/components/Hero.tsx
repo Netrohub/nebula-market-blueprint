@@ -42,7 +42,7 @@ const Hero = () => {
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="gap-2 glass-card border-primary/30 hover:border-primary/50 text-base px-8 py-6">
-              <Link to="/seller/dashboard">
+              <Link to="/seller/onboarding">
                 Become a Seller
               </Link>
             </Button>

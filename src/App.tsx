@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { LanguageProvider } from "./contexts/LanguageContext";
 import Index from "./pages/Index";
 import Leaderboard from "./pages/Leaderboard";
 import Games from "./pages/Games";
@@ -36,17 +37,19 @@ import SellerOrders from "./pages/seller/Orders";
 import SellerProfilePage from "./pages/seller/Profile";
 import SellerBilling from "./pages/seller/Billing";
 import SellerNotifications from "./pages/seller/Notifications";
+import SellerOnboarding from "./pages/seller/SellerOnboarding";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
+    <LanguageProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/games" element={<Games />} />
@@ -75,9 +78,12 @@ const App = () => (
           <Route path="/account/kyc" element={<KYC />} />
           <Route path="/account/phone-verification" element={<PhoneVerification />} />
           <Route path="/seller/dashboard" element={<SellerDashboard />} />
+          <Route path="/seller/onboarding" element={<SellerOnboarding />} />
           <Route path="/seller/profile" element={<SellerProfilePage />} />
           <Route path="/seller/products" element={<SellerProducts />} />
           <Route path="/seller/products/create" element={<CreateProduct />} />
+          <Route path="/seller/list/social" element={<CreateProduct />} />
+          <Route path="/seller/list/gaming" element={<CreateProduct />} />
           <Route path="/seller/orders" element={<SellerOrders />} />
           <Route path="/seller/billing" element={<SellerBilling />} />
           <Route path="/seller/notifications" element={<SellerNotifications />} />
@@ -86,6 +92,7 @@ const App = () => (
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
+  </LanguageProvider>
   </QueryClientProvider>
 );
 

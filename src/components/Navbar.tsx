@@ -2,8 +2,12 @@ import { Search, ShoppingCart, User, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
+  const { t } = useLanguage();
+  
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-border/50 glass-card">
       <div className="container mx-auto px-4">
@@ -27,19 +31,19 @@ const Navbar = () => {
             
             <div className="hidden md:flex items-center gap-6">
               <Link to="/" className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors relative group">
-                Home
+                {t('home')}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300" />
               </Link>
               <Link to="/products" className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors relative group">
-                Products
+                {t('products')}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300" />
               </Link>
               <Link to="/games" className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors relative group">
-                Games
+                {t('games')}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300" />
               </Link>
               <Link to="/leaderboard" className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors relative group">
-                Leaderboard
+                {t('leaderboard')}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300" />
               </Link>
             </div>
@@ -57,6 +61,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-2">
+            <LanguageSwitcher />
             <Button asChild variant="ghost" size="icon" className="hidden md:flex hover:bg-primary/10 hover:text-primary transition-colors">
               <Link to="/account/dashboard">
                 <User className="h-5 w-5" />
