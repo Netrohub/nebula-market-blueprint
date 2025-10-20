@@ -38,6 +38,8 @@ import SellerProfilePage from "./pages/seller/Profile";
 import SellerBilling from "./pages/seller/Billing";
 import SellerNotifications from "./pages/seller/Notifications";
 import SellerOnboarding from "./pages/seller/SellerOnboarding";
+import ListGamingAccount from "./pages/seller/ListGamingAccount";
+import ListSocialAccount from "./pages/seller/ListSocialAccount";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -82,8 +84,8 @@ const App = () => (
           <Route path="/seller/profile" element={<SellerProfilePage />} />
           <Route path="/seller/products" element={<SellerProducts />} />
           <Route path="/seller/products/create" element={<CreateProduct />} />
-          <Route path="/seller/list/social" element={<CreateProduct />} />
-          <Route path="/seller/list/gaming" element={<CreateProduct />} />
+          <Route path="/seller/list/social" element={<ListSocialAccount />} />
+          <Route path="/seller/list/gaming" element={<ListGamingAccount />} />
           <Route path="/seller/orders" element={<SellerOrders />} />
           <Route path="/seller/billing" element={<SellerBilling />} />
           <Route path="/seller/notifications" element={<SellerNotifications />} />
