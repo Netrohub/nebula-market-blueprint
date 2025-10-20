@@ -8,8 +8,11 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Link } from "react-router-dom";
 import { Mail, Lock, ArrowRight, Smartphone } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Login = () => {
+  const { t } = useLanguage();
+  
   return (
     <div className="min-h-screen flex flex-col relative">
       <Starfield />
@@ -25,10 +28,10 @@ const Login = () => {
                   <Lock className="h-6 w-6 text-white" />
                 </div>
                 <h1 className="text-3xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-2">
-                  Welcome Back
+                  {t('welcomeBack')}
                 </h1>
                 <p className="text-foreground/60">
-                  Sign in to your Nexo account
+                  {t('signInToAccount')}
                 </p>
               </div>
 
@@ -37,7 +40,7 @@ const Login = () => {
                 {/* Email */}
                 <div className="space-y-2">
                   <Label htmlFor="email" className="text-foreground">
-                    Email Address
+                    {t('emailAddress')}
                   </Label>
                   <div className="relative">
                     <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary/70" />
@@ -53,7 +56,7 @@ const Login = () => {
                 {/* Password */}
                 <div className="space-y-2">
                   <Label htmlFor="password" className="text-foreground">
-                    Password
+                    {t('password')}
                   </Label>
                   <div className="relative">
                     <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary/70" />
@@ -74,14 +77,14 @@ const Login = () => {
                       htmlFor="remember"
                       className="text-sm text-foreground/70 cursor-pointer"
                     >
-                      Remember me
+                      {t('rememberMe')}
                     </label>
                   </div>
                   <Link
                     to="/forgot-password"
                     className="text-sm text-primary hover:text-primary/80 transition-colors"
                   >
-                    Forgot password?
+                    {t('forgotPassword')}
                   </Link>
                 </div>
 
@@ -94,7 +97,7 @@ const Login = () => {
 
                 {/* Submit Button */}
                 <Button type="submit" className="w-full btn-glow" size="lg">
-                  Sign In
+                  {t('signIn')}
                   <ArrowRight className="h-4 w-4 ml-2" />
                 </Button>
               </form>
@@ -105,7 +108,7 @@ const Login = () => {
                   <div className="w-full border-t border-border/50" />
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-4 bg-card text-foreground/60">Or continue with</span>
+                  <span className="px-4 bg-card text-foreground/60">{t('orContinueWith')}</span>
                 </div>
               </div>
 
@@ -118,18 +121,18 @@ const Login = () => {
                   size="lg"
                 >
                   <Smartphone className="h-5 w-5 mr-2" />
-                  Phone Number
+                  {t('phoneNumber')}
                 </Button>
               </div>
 
               {/* Sign Up Link */}
               <p className="text-center text-sm text-foreground/60 mt-6">
-                Don't have an account?{" "}
+                {t('dontHaveAccount')}{" "}
                 <Link
                   to="/register"
                   className="text-primary hover:text-primary/80 font-semibold transition-colors"
                 >
-                  Create Account
+                  {t('createAccount')}
                 </Link>
               </p>
             </Card>

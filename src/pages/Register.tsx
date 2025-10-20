@@ -8,8 +8,11 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Link } from "react-router-dom";
 import { Mail, Lock, User, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Register = () => {
+  const { t } = useLanguage();
+  
   return (
     <div className="min-h-screen flex flex-col relative">
       <Starfield />
@@ -25,10 +28,10 @@ const Register = () => {
                   <User className="h-6 w-6 text-white" />
                 </div>
                 <h1 className="text-3xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-2">
-                  Create Account
+                  {t('createAccount')}
                 </h1>
                 <p className="text-foreground/60">
-                  Join Nexo marketplace today
+                  {t('joinNexoMarketplace')}
                 </p>
               </div>
 
@@ -37,14 +40,14 @@ const Register = () => {
                 {/* Username */}
                 <div className="space-y-2">
                   <Label htmlFor="username" className="text-foreground">
-                    Username
+                    {t('username')}
                   </Label>
                   <div className="relative">
                     <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary/70" />
                     <Input
                       id="username"
                       type="text"
-                      placeholder="Choose a username"
+                      placeholder={t('chooseUsername')}
                       className="pl-10 glass-card border-border/50 focus:border-primary/50"
                     />
                   </div>
@@ -53,7 +56,7 @@ const Register = () => {
                 {/* Email */}
                 <div className="space-y-2">
                   <Label htmlFor="email" className="text-foreground">
-                    Email Address
+                    {t('emailAddress')}
                   </Label>
                   <div className="relative">
                     <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary/70" />
@@ -69,33 +72,33 @@ const Register = () => {
                 {/* Password */}
                 <div className="space-y-2">
                   <Label htmlFor="password" className="text-foreground">
-                    Password
+                    {t('password')}
                   </Label>
                   <div className="relative">
                     <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary/70" />
                     <Input
                       id="password"
                       type="password"
-                      placeholder="Create a strong password"
+                      placeholder={t('createStrongPassword')}
                       className="pl-10 glass-card border-border/50 focus:border-primary/50"
                     />
                   </div>
                   <p className="text-xs text-foreground/50">
-                    Must be at least 8 characters with numbers and symbols
+                    {t('passwordRequirements')}
                   </p>
                 </div>
 
                 {/* Confirm Password */}
                 <div className="space-y-2">
                   <Label htmlFor="confirm-password" className="text-foreground">
-                    Confirm Password
+                    {t('confirmPassword')}
                   </Label>
                   <div className="relative">
                     <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary/70" />
                     <Input
                       id="confirm-password"
                       type="password"
-                      placeholder="Confirm your password"
+                      placeholder={t('confirmYourPassword')}
                       className="pl-10 glass-card border-border/50 focus:border-primary/50"
                     />
                   </div>
@@ -108,13 +111,13 @@ const Register = () => {
                     htmlFor="terms"
                     className="text-sm text-foreground/70 cursor-pointer leading-relaxed"
                   >
-                    I agree to the{" "}
+                    {t('iAgreeToThe')}{" "}
                     <Link to="/terms" className="text-primary hover:text-primary/80">
-                      Terms of Service
+                      {t('termsOfService')}
                     </Link>{" "}
-                    and{" "}
+                    {t('and')}{" "}
                     <Link to="/privacy" className="text-primary hover:text-primary/80">
-                      Privacy Policy
+                      {t('privacyPolicy')}
                     </Link>
                   </label>
                 </div>
@@ -122,25 +125,25 @@ const Register = () => {
                 {/* Turnstile CAPTCHA Placeholder */}
                 <div className="p-4 glass-card border border-border/50 rounded-lg text-center">
                   <p className="text-sm text-foreground/60">
-                    🔒 Cloudflare Turnstile CAPTCHA
+                    {t('cloudflareTurnstile')}
                   </p>
                 </div>
 
                 {/* Submit Button */}
                 <Button type="submit" className="w-full btn-glow" size="lg">
-                  Create Account
+                  {t('createAccount')}
                   <ArrowRight className="h-4 w-4 ml-2" />
                 </Button>
               </form>
 
               {/* Sign In Link */}
               <p className="text-center text-sm text-foreground/60 mt-6">
-                Already have an account?{" "}
+                {t('alreadyHaveAccount')}{" "}
                 <Link
                   to="/login"
                   className="text-primary hover:text-primary/80 font-semibold transition-colors"
                 >
-                  Sign In
+                  {t('signIn')}
                 </Link>
               </p>
             </Card>

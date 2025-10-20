@@ -4,38 +4,41 @@ import Starfield from "@/components/Starfield";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Shield, Zap, Award, Users, TrendingUp, Globe } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-const stats = [
-  { label: "Active Users", value: "50K+", icon: Users },
-  { label: "Products Sold", value: "1M+", icon: TrendingUp },
-  { label: "Countries", value: "120+", icon: Globe },
-  { label: "Success Rate", value: "99.8%", icon: Award },
+const stats = (t: (key: string) => string) => [
+  { label: t('activeUsers'), value: "50K+", icon: Users },
+  { label: t('productsSold'), value: "1M+", icon: TrendingUp },
+  { label: t('countries'), value: "120+", icon: Globe },
+  { label: t('successRate'), value: "99.8%", icon: Award },
 ];
 
-const values = [
+const values = (t: (key: string) => string) => [
   {
     icon: Shield,
-    title: "Security First",
-    description: "Your safety is our top priority. We use industry-leading security measures to protect every transaction.",
+    title: t('securityFirst'),
+    description: t('securityFirstDesc'),
   },
   {
     icon: Zap,
-    title: "Lightning Fast",
-    description: "Instant delivery of digital products. No waiting, no delays - get what you paid for immediately.",
+    title: t('lightningFast'),
+    description: t('lightningFastDesc'),
   },
   {
     icon: Award,
-    title: "Quality Assured",
-    description: "Every product and seller is verified. We maintain the highest standards in the marketplace.",
+    title: t('qualityAssured'),
+    description: t('qualityAssuredDesc'),
   },
   {
     icon: Users,
-    title: "Community Driven",
-    description: "Built by gamers, for gamers. We listen to our community and constantly improve based on your feedback.",
+    title: t('communityDriven'),
+    description: t('communityDrivenDesc'),
   },
 ];
 
 const About = () => {
+  const { t } = useLanguage();
+  
   return (
     <div className="min-h-screen flex flex-col relative">
       <Starfield />
@@ -50,14 +53,14 @@ const About = () => {
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center space-y-6 max-w-3xl mx-auto">
               <Badge className="badge-glow border-0 mb-4">
-                About Us
+                {t('aboutUs')}
               </Badge>
               
               <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Empowering Digital Commerce
+                {t('empoweringDigitalCommerce')}
               </h1>
               <p className="text-xl text-foreground/60 leading-relaxed">
-                Nexo is the premier marketplace for digital gaming assets. We connect buyers and sellers in a secure, transparent environment where trust and quality come first.
+                {t('aboutDescription')}
               </p>
             </div>
           </div>
@@ -67,7 +70,7 @@ const About = () => {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {stats.map((stat) => {
+              {stats(t).map((stat) => {
                 const Icon = stat.icon;
                 return (
                   <Card key={stat.label} className="glass-card p-6 text-center">
@@ -95,22 +98,22 @@ const About = () => {
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
                 <h2 className="text-4xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4">
-                  Our Story
+                  {t('ourStory')}
                 </h2>
                 <p className="text-foreground/60 text-lg">
-                  Building the future of digital marketplaces
+                  {t('buildingFuture')}
                 </p>
               </div>
 
               <Card className="glass-card p-8 md:p-12 space-y-6 text-foreground/70 leading-relaxed">
                 <p className="text-lg">
-                  Founded in 2024, Nexo was born from a simple observation: the digital gaming marketplace was fragmented, insecure, and lacked the trust that modern commerce demands.
+                  {t('storyParagraph1')}
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  We set out to change that. By combining cutting-edge technology, rigorous verification processes, and a customer-first approach, we created a platform where trading digital assets is as simple and secure as it should be.
+                  {t('storyParagraph2')}
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  Today, Nexo is more than just a marketplace - it's a community. A place where gamers connect, trade grows, and digital commerce thrives in a safe, transparent environment.
+                  {t('storyParagraph3')}
                 </p>
               </Card>
             </div>
@@ -122,15 +125,15 @@ const About = () => {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4">
-                Our Values
+                {t('ourValues')}
               </h2>
               <p className="text-foreground/60 text-lg">
-                The principles that guide everything we do
+                {t('principlesGuide')}
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-              {values.map((value) => {
+              {values(t).map((value) => {
                 const Icon = value.icon;
                 return (
                   <Card key={value.title} className="glass-card p-8 group hover:scale-[1.02] transition-all">
@@ -155,10 +158,10 @@ const About = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center space-y-6">
               <h2 className="text-4xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Our Mission
+                {t('ourMission')}
               </h2>
               <p className="text-xl text-foreground/70 leading-relaxed">
-                To create the world's most trusted digital marketplace where gamers can buy, sell, and trade with absolute confidence, knowing their transactions are secure, their assets are verified, and their community values integrity above all else.
+                {t('missionStatement')}
               </p>
             </div>
           </div>
