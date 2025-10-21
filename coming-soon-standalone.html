@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Nexo - Coming Soon | قريباً</title>
-    <meta name="description" content="Nexo - The ultimate marketplace for digital assets. Coming soon! | المنصة المثالية للأصول الرقمية. قريباً!" />
+    <meta
+      name="description"
+      content="Nexo - The ultimate marketplace for digital assets. Coming soon! |وجهتك الموثوقة للمنتجات الرقمية. قريباً!"
+    />
     <style>
       * {
         margin: 0;
@@ -367,81 +370,82 @@
     </div>
 
     <script>
-      const translations = {
-        en: {
-          title: 'Coming Soon',
-          description: 'The ultimate marketplace for digital assets. Buy and sell social media accounts, gaming accounts, and more in a secure, trusted environment.',
-          'secure-title': 'Secure Trading',
-          'secure-text': 'Bank-grade security for all transactions',
-          'instant-title': 'Instant Delivery',
-          'instant-text': 'Get your digital assets immediately',
-          'protection-title': 'Buyer Protection',
-          'protection-text': 'Escrow protection for every trade',
-          'discord-text': 'Join Our Discord',
-          notify: 'Be the first to know when we launch!',
-          langText: 'العربية'
-        },
-        ar: {
-          title: 'قريباً',
-          description: 'المنصة المثالية للأصول الرقمية. شراء وبيع حسابات وسائل التواصل الاجتماعي وحسابات الألعاب والمزيد في بيئة آمنة وموثوقة.',
-          'secure-title': 'تداول آمن',
-          'secure-text': 'أمان على مستوى البنوك لجميع المعاملات',
-          'instant-title': 'تسليم فوري',
-          'instant-text': 'احصل على أصولك الرقمية على الفور',
-          'protection-title': 'حماية المشتري',
-          'protection-text': 'حماية الضمان لكل صفقة',
-          'discord-text': 'انضم إلى ديسكورد',
-          notify: 'كن أول من يعرف عند الإطلاق!',
-          langText: 'English'
-        }
-      };
+            const translations = {
+              en: {
+                title: 'Coming Soon',
+                description: 'The ultimate marketplace for digital assets. Buy and sell social media accounts, gaming accounts, and more in a secure, trusted environment.',
+                'secure-title': 'Secure Trading',
+                'secure-text': 'Bank-grade security for all transactions',
+                'instant-title': 'Instant Delivery',
+                'instant-text': 'Get your digital assets immediately',
+                'protection-title': 'Buyer Protection',
+                'protection-text': 'Escrow protection for every trade',
+                'discord-text': 'Join Our Discord',
+                notify: 'Be the first to know when we launch!',
+                langText: 'العربية'
+              },
+              ar: {
+                title: 'قريباً',
+                description: 'وجهتك الموثوقة للأصول الرقمية.
+      اشترِ وبِع حسابات الألعاب ووسائل التواصل الاجتماعي بسرعة وأمان وراحة تامة..',
+                'secure-title': 'تداول آمن',
+                'secure-text': 'أمان على مستوى البنوك لجميع المعاملات',
+                'instant-title': 'تسليم فوري',
+                'instant-text': 'منتجاتك الرقمية تصلك في لحظات.',
+                'protection-title': 'حماية المشتري',
+                'protection-text': 'حماية المشتري تضمن تجربة خالية من المخاطر.',
+                'discord-text': 'انضم إلى ديسكورد',
+                notify: 'كن أول من يعرف عند الإطلاق!',
+                langText: 'English'
+              }
+            };
 
-      let currentLang = 'en';
+            let currentLang = 'en';
 
-      function toggleLanguage() {
-        currentLang = currentLang === 'en' ? 'ar' : 'en';
-        const isRTL = currentLang === 'ar';
-        
-        document.documentElement.setAttribute('lang', currentLang);
-        document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
-        document.body.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
-        
-        // Update all text content
-        document.getElementById('title').textContent = translations[currentLang].title;
-        document.getElementById('description').textContent = translations[currentLang].description;
-        document.getElementById('discord-text').textContent = translations[currentLang]['discord-text'];
-        document.getElementById('notify').textContent = translations[currentLang].notify;
-        document.getElementById('lang-text').textContent = translations[currentLang].langText;
-        
-        // Update feature cards
-        document.querySelectorAll('[data-lang]').forEach(el => {
-          const key = el.getAttribute('data-lang');
-          el.textContent = translations[currentLang][key];
-        });
+            function toggleLanguage() {
+              currentLang = currentLang === 'en' ? 'ar' : 'en';
+              const isRTL = currentLang === 'ar';
 
-        // Save preference
-        localStorage.setItem('preferredLang', currentLang);
-      }
+              document.documentElement.setAttribute('lang', currentLang);
+              document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+              document.body.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
 
-      // Load saved language preference
-      const savedLang = localStorage.getItem('preferredLang');
-      if (savedLang && savedLang !== 'en') {
-        toggleLanguage();
-      }
+              // Update all text content
+              document.getElementById('title').textContent = translations[currentLang].title;
+              document.getElementById('description').textContent = translations[currentLang].description;
+              document.getElementById('discord-text').textContent = translations[currentLang]['discord-text'];
+              document.getElementById('notify').textContent = translations[currentLang].notify;
+              document.getElementById('lang-text').textContent = translations[currentLang].langText;
 
-      // Generate random stars
-      const starsContainer = document.getElementById('stars');
-      const starCount = 100;
+              // Update feature cards
+              document.querySelectorAll('[data-lang]').forEach(el => {
+                const key = el.getAttribute('data-lang');
+                el.textContent = translations[currentLang][key];
+              });
 
-      for (let i = 0; i < starCount; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.animationDelay = Math.random() * 3 + 's';
-        star.style.opacity = Math.random() * 0.5 + 0.2;
-        starsContainer.appendChild(star);
-      }
+              // Save preference
+              localStorage.setItem('preferredLang', currentLang);
+            }
+
+            // Load saved language preference
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang && savedLang !== 'en') {
+              toggleLanguage();
+            }
+
+            // Generate random stars
+            const starsContainer = document.getElementById('stars');
+            const starCount = 100;
+
+            for (let i = 0; i < starCount; i++) {
+              const star = document.createElement('div');
+              star.className = 'star';
+              star.style.left = Math.random() * 100 + '%';
+              star.style.top = Math.random() * 100 + '%';
+              star.style.animationDelay = Math.random() * 3 + 's';
+              star.style.opacity = Math.random() * 0.5 + 0.2;
+              starsContainer.appendChild(star);
+            }
     </script>
   </body>
 </html>
