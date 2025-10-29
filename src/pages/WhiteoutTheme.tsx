@@ -32,7 +32,7 @@ const WhiteoutTheme = () => {
         <div className="flex items-center gap-2">
           <Snowflake className="h-8 w-8 text-[hsl(195,80%,70%)]" />
           <span className="text-xl md:text-2xl font-black text-white">
-            NEXO<span className="text-[hsl(40,90%,55%)]">SURVIVAL</span>
+            NEXO<span className="text-[hsl(180,100%,50%)]">.</span>
           </span>
         </div>
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-white/80">
