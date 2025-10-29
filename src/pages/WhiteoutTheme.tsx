@@ -6,7 +6,7 @@ const WhiteoutTheme = () => {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Icy background with gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(200,70%,15%)] via-[hsl(195,60%,25%)] to-[hsl(200,70%,15%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(200,50%,8%)] via-[hsl(195,40%,12%)] to-[hsl(200,50%,8%)]" />
       
       {/* Animated snow particles */}
       <div className="absolute inset-0 pointer-events-none">
@@ -28,7 +28,7 @@ const WhiteoutTheme = () => {
       <div className="absolute inset-0 bg-gradient-radial from-transparent via-[hsl(195,80%,50%,0.05)] to-transparent opacity-40" />
       
       {/* Navigation */}
-      <nav className="relative z-20 flex items-center justify-between px-6 py-4 md:px-12 border-b border-white/10 backdrop-blur-md bg-[hsl(200,70%,15%,0.5)]">
+      <nav className="relative z-20 flex items-center justify-between px-6 py-4 md:px-12 border-b border-white/10 backdrop-blur-md bg-[hsl(200,50%,8%,0.8)]">
         <div className="flex items-center gap-2">
           <Snowflake className="h-8 w-8 text-[hsl(195,80%,70%)]" />
           <span className="text-xl md:text-2xl font-black text-white">
@@ -46,7 +46,7 @@ const WhiteoutTheme = () => {
       <section className="relative z-10 container mx-auto px-4 md:px-6 py-24 md:py-32">
         <div className="flex flex-col items-center text-center space-y-8">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-[hsl(195,80%,70%,0.3)]">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 backdrop-blur-sm border border-[hsl(195,80%,70%,0.3)]">
             <Snowflake className="h-4 w-4 text-[hsl(195,80%,70%)] animate-pulse" />
             <span className="text-sm font-medium text-[hsl(195,80%,70%)]">
               An Epic Journey Through Ice and Snow
@@ -81,7 +81,7 @@ const WhiteoutTheme = () => {
             <Button 
               asChild 
               size="lg" 
-              className="gap-2 text-base px-8 py-6 bg-white/5 hover:bg-white/10 text-white font-bold backdrop-blur-sm border border-white/20"
+              className="gap-2 text-base px-8 py-6 bg-black/40 hover:bg-black/60 text-white font-bold backdrop-blur-sm border border-white/20"
             >
               <Link to="/about">
                 Learn More
@@ -123,7 +123,7 @@ const WhiteoutTheme = () => {
           ].map((feature, i) => (
             <div 
               key={i}
-              className="p-6 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 hover:border-[hsl(195,80%,70%,0.5)] transition-all hover:bg-white/10 group"
+              className="p-6 rounded-lg bg-black/40 backdrop-blur-sm border border-white/10 hover:border-[hsl(195,80%,70%,0.5)] transition-all hover:bg-black/60 group"
             >
               <feature.icon className="h-8 w-8 text-[hsl(195,80%,70%)] mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
