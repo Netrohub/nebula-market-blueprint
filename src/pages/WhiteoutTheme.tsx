@@ -1,141 +1,168 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Snowflake, Shield, Flame } from "lucide-react";
+import { Play, ChevronDown, Swords, Mountain, Wind } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const WhiteoutTheme = () => {
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      {/* Icy background with gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(200,50%,8%)] via-[hsl(195,40%,12%)] to-[hsl(200,50%,8%)]" />
-      
-      {/* Animated snow particles */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(50)].map((_, i) => (
+    <div className="min-h-screen bg-black text-white overflow-hidden">
+      {/* Heavy snow effect */}
+      <div className="fixed inset-0 pointer-events-none z-50">
+        {[...Array(100)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-white/60 rounded-full animate-[fall_linear_infinite]"
+            className="absolute bg-white rounded-full"
             style={{
+              width: `${Math.random() * 4 + 1}px`,
+              height: `${Math.random() * 4 + 1}px`,
               left: `${Math.random() * 100}%`,
-              top: `-${Math.random() * 20}%`,
-              animationDuration: `${10 + Math.random() * 20}s`,
+              top: `-5%`,
+              opacity: Math.random() * 0.6 + 0.4,
+              animation: `fall ${Math.random() * 3 + 2}s linear infinite`,
               animationDelay: `${Math.random() * 5}s`,
             }}
           />
         ))}
       </div>
-      
-      {/* Frost overlay effect */}
-      <div className="absolute inset-0 bg-gradient-radial from-transparent via-[hsl(195,80%,50%,0.05)] to-transparent opacity-40" />
-      
-      {/* Navigation */}
-      <nav className="relative z-20 flex items-center justify-between px-6 py-4 md:px-12 border-b border-white/10 backdrop-blur-md bg-[hsl(200,50%,8%,0.8)]">
-        <div className="flex items-center gap-2">
-          <Snowflake className="h-8 w-8 text-[hsl(195,80%,70%)]" />
-          <span className="text-xl md:text-2xl font-black text-white">
-            NEXO<span className="text-[hsl(40,90%,55%)]">SURVIVAL</span>
-          </span>
-        </div>
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-white/80">
-          <a href="#" className="hover:text-[hsl(195,80%,70%)] transition-colors">Home</a>
-          <a href="#" className="hover:text-[hsl(195,80%,70%)] transition-colors">Features</a>
-          <a href="#" className="hover:text-[hsl(195,80%,70%)] transition-colors">About</a>
-        </div>
-      </nav>
 
-      {/* Hero Section */}
-      <section className="relative z-10 container mx-auto px-4 md:px-6 py-24 md:py-32">
-        <div className="flex flex-col items-center text-center space-y-8">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 backdrop-blur-sm border border-[hsl(195,80%,70%,0.3)]">
-            <Snowflake className="h-4 w-4 text-[hsl(195,80%,70%)] animate-pulse" />
-            <span className="text-sm font-medium text-[hsl(195,80%,70%)]">
-              An Epic Journey Through Ice and Snow
-            </span>
-          </div>
-          
-          {/* Main Heading */}
-          <div className="space-y-6 max-w-4xl">
-            <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-tight text-white drop-shadow-[0_0_30px_rgba(148,209,240,0.5)]">
-              Survive the{" "}
-              <span className="text-[hsl(195,80%,70%)]">Frozen</span>{" "}
-              Wasteland
+      {/* Ice crystals background pattern */}
+      <div className="fixed inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 20% 50%, white 1px, transparent 1px),
+                           radial-gradient(circle at 60% 80%, white 1px, transparent 1px),
+                           radial-gradient(circle at 80% 20%, white 1px, transparent 1px)`,
+          backgroundSize: '100px 100px, 150px 150px, 120px 120px',
+        }} />
+      </div>
+
+      {/* Dark gradient overlay */}
+      <div className="fixed inset-0 bg-gradient-to-b from-gray-900 via-slate-900 to-black" />
+      
+      {/* Blue aurora glow */}
+      <div className="fixed inset-0">
+        <div className="absolute top-0 left-1/4 w-1/2 h-1/2 bg-cyan-500/10 blur-[150px] rounded-full" />
+        <div className="absolute bottom-0 right-1/4 w-1/2 h-1/2 bg-blue-600/10 blur-[150px] rounded-full" />
+      </div>
+
+      {/* Minimal top bar */}
+      <header className="relative z-30 flex items-center justify-between px-4 md:px-12 py-6">
+        <div className="text-2xl md:text-3xl font-black tracking-wider">
+          <span className="text-white">NEXO</span>
+          <span className="text-cyan-400">.</span>
+        </div>
+        <nav className="hidden md:flex gap-8 text-sm uppercase tracking-wide">
+          <a href="#" className="text-gray-400 hover:text-white transition-colors">Store</a>
+          <a href="#" className="text-gray-400 hover:text-white transition-colors">Games</a>
+          <a href="#" className="text-gray-400 hover:text-white transition-colors">About</a>
+        </nav>
+      </header>
+
+      {/* Hero - Full viewport */}
+      <main className="relative z-20">
+        <section className="min-h-[90vh] flex flex-col items-center justify-center px-4 md:px-6 pb-20">
+          {/* Centered content */}
+          <div className="max-w-5xl mx-auto text-center space-y-8 md:space-y-12">
+            {/* Small tag */}
+            <div className="inline-block">
+              <div className="text-cyan-400 text-xs md:text-sm uppercase tracking-[0.3em] font-semibold">
+                New Season Available
+              </div>
+            </div>
+
+            {/* Massive title */}
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black leading-none tracking-tight">
+              <div className="text-white/10 mb-2">FROZEN</div>
+              <div className="bg-gradient-to-b from-white to-cyan-200 bg-clip-text text-transparent drop-shadow-2xl">
+                WASTELAND
+              </div>
             </h1>
-            <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
-              Build your shelter, gather resources, and lead your people through the harsh winter. Only the strongest will survive.
+
+            {/* Subtitle */}
+            <p className="text-base md:text-xl text-gray-400 max-w-2xl mx-auto font-light tracking-wide leading-relaxed">
+              Face the eternal winter. Build, survive, conquer. 
+              <br className="hidden md:block" />
+              Your tribe depends on you.
             </p>
-          </div>
-          
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <Button 
-              asChild 
-              size="lg" 
-              className="gap-2 text-base px-8 py-6 bg-[hsl(195,80%,50%)] hover:bg-[hsl(195,80%,60%)] text-white font-bold shadow-[0_0_30px_rgba(56,189,248,0.4)] border-0"
-            >
-              <Link to="/products">
-                <Shield className="h-5 w-5" />
-                Start Your Journey
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
-            <Button 
-              asChild 
-              size="lg" 
-              className="gap-2 text-base px-8 py-6 bg-black/40 hover:bg-black/60 text-white font-bold backdrop-blur-sm border border-white/20"
-            >
-              <Link to="/about">
-                Learn More
-              </Link>
-            </Button>
-          </div>
-          
-          {/* Feature badges */}
-          <div className="flex flex-wrap justify-center gap-6 pt-8">
-            <div className="flex items-center gap-2 text-sm text-white/70">
-              <div className="p-2 rounded-lg bg-[hsl(195,80%,50%,0.15)] border border-[hsl(195,80%,70%,0.3)]">
-                <Shield className="h-4 w-4 text-[hsl(195,80%,70%)]" />
-              </div>
-              <span>Protected Trades</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-white/70">
-              <div className="p-2 rounded-lg bg-[hsl(40,90%,55%,0.15)] border border-[hsl(40,90%,55%,0.3)]">
-                <Flame className="h-4 w-4 text-[hsl(40,90%,55%)]" />
-              </div>
-              <span>Instant Access</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-white/70">
-              <div className="p-2 rounded-lg bg-[hsl(195,80%,50%,0.15)] border border-[hsl(195,80%,70%,0.3)]">
-                <Snowflake className="h-4 w-4 text-[hsl(195,80%,70%)]" />
-              </div>
-              <span>24/7 Support</span>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Features Grid */}
-      <section className="relative z-10 container mx-auto px-4 md:px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            { title: "Build & Survive", icon: Shield, desc: "Construct shelters and defend against the cold" },
-            { title: "Gather Resources", icon: Snowflake, desc: "Collect materials to keep your people alive" },
-            { title: "Lead Your Tribe", icon: Flame, desc: "Make tough decisions in harsh conditions" },
-          ].map((feature, i) => (
-            <div 
-              key={i}
-              className="p-6 rounded-lg bg-black/40 backdrop-blur-sm border border-white/10 hover:border-[hsl(195,80%,70%,0.5)] transition-all hover:bg-black/60 group"
-            >
-              <feature.icon className="h-8 w-8 text-[hsl(195,80%,70%)] mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
-              <p className="text-white/60">{feature.desc}</p>
+            {/* CTA */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
+              <Button 
+                asChild
+                size="lg"
+                className="group bg-white hover:bg-gray-100 text-black font-bold text-base px-10 py-7 rounded-none border-0 shadow-2xl shadow-cyan-500/20"
+              >
+                <Link to="/products">
+                  <Play className="h-5 w-5 fill-current" />
+                  ENTER MARKETPLACE
+                </Link>
+              </Button>
+              
+              <Button
+                asChild
+                size="lg"
+                className="bg-transparent hover:bg-white/5 text-white font-semibold text-base px-10 py-7 rounded-none border border-white/20"
+              >
+                <Link to="/about">
+                  WATCH TRAILER
+                </Link>
+              </Button>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
 
-      {/* Glow effects */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[hsl(195,80%,50%,0.15)] rounded-full blur-[120px] animate-pulse pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[hsl(200,70%,40%,0.15)] rounded-full blur-[120px] animate-pulse pointer-events-none" style={{ animationDelay: '1s' }} />
+          {/* Scroll indicator */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+            <span className="text-xs uppercase tracking-widest text-gray-500">Scroll</span>
+            <ChevronDown className="h-4 w-4 animate-bounce text-gray-500" />
+          </div>
+        </section>
+
+        {/* Features - Dark cards */}
+        <section className="relative py-24 md:py-32 px-4 md:px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+              {[
+                { 
+                  icon: Swords, 
+                  title: "COMBAT", 
+                  desc: "Fight for survival against the elements and enemies",
+                  color: "from-red-500/20 to-transparent"
+                },
+                { 
+                  icon: Mountain, 
+                  title: "EXPLORE", 
+                  desc: "Discover frozen ruins and hidden treasures",
+                  color: "from-cyan-500/20 to-transparent"
+                },
+                { 
+                  icon: Wind, 
+                  title: "ADAPT", 
+                  desc: "Weather the storm with strategy and skill",
+                  color: "from-blue-500/20 to-transparent"
+                },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="group relative overflow-hidden"
+                >
+                  {/* Card background */}
+                  <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+                       style={{ backgroundImage: `linear-gradient(to bottom right, ${item.color})` }} 
+                  />
+                  
+                  <div className="relative p-8 md:p-12 border border-white/5 bg-black/40 backdrop-blur-sm h-full">
+                    <item.icon className="h-10 w-10 md:h-12 md:w-12 text-cyan-400 mb-6 group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} />
+                    <h3 className="text-xl md:text-2xl font-black tracking-wider mb-3 text-white">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm md:text-base text-gray-400 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 };
