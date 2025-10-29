@@ -24,8 +24,9 @@ const Navbar = () => {
                   </svg>
                 </div>
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent tracking-tight">
-                Nexo
+              <span className="text-xl font-bold tracking-tight">
+                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">NEXO</span>
+                <span className="text-[hsl(180,100%,50%)]">.</span>
               </span>
             </Link>
             
