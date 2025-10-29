@@ -46,6 +46,7 @@ import DisputeList from "./pages/disputes/DisputeList";
 import CreateDispute from "./pages/disputes/CreateDispute";
 import DisputeDetail from "./pages/disputes/DisputeDetail";
 import AdminDisputes from "./pages/disputes/AdminDisputes";
+import WhiteoutTheme from "./pages/WhiteoutTheme";
 
 const queryClient = new QueryClient();
 
@@ -99,6 +100,7 @@ const App = () => (
           <Route path="/disputes/create" element={<CreateDispute />} />
           <Route path="/disputes/:id" element={<DisputeDetail />} />
           <Route path="/admin/disputes" element={<AdminDisputes />} />
+          <Route path="/whiteout-theme" element={<WhiteoutTheme />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
